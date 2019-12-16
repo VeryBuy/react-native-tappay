@@ -1,5 +1,6 @@
 package tw.com.verybuy.directpay;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import com.facebook.react.uimanager.ViewManager;
 public class TapPayPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List<NativeModule> nativeModules = new ArrayList<>();
+        nativeModules.add(new DirectPayTPDSetup(reactContext));
+        return nativeModules;
     }
 
     public List<Class<? extends JavaScriptModule>> createJSModules() {

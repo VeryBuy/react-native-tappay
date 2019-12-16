@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
-import { requireNativeComponent, ViewPropTypes } from 'react-native';
+import { requireNativeComponent, ViewPropTypes, NativeModules } from 'react-native';
 
-let directPayProps = {
-    name: 'DirectPay',
+let directPayTPDFormProps = {
+    name: 'DirectPayTPDForm',
     propTypes: {
-        // color: PropTypes.string,
-        text: PropTypes.string,
+        errorColor: PropTypes.string,
         ...ViewPropTypes,
     },
 };
 
-const DirectPay = requireNativeComponent('DirectPay', directPayProps);
+export const DirectPayTPDForm = requireNativeComponent('DirectPayTPDForm', directPayTPDFormProps);
+export const DirectPayTPDSetup = NativeModules.DirectPayTPDSetup;
 
-export default DirectPay;
