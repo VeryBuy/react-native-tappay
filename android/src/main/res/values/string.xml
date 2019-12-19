@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="direct_pay_id">10598</string>
+    <string name="direct_pay_key_production">8wWS8tMZgVao4EFvAEd0A7uMXqlsORVS13YuFLzg</string>
+    <string name="direct_pay_key_sandbox">UuFN8xNfxr2CXFxvUE1xQ3Jatwxs4hkr2kXmbaGr</string>
+
+</resources>
