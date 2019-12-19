@@ -1,7 +1,7 @@
 package tw.com.verybuy.directpay;
 
 import android.graphics.Color;
-import android.util.Log;
+import android.os.Handler;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
@@ -25,9 +25,20 @@ import tech.cherri.tpdirect.model.TPDStatus;
 
 public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
 
-    private static final String TAG = "DirectPayTPDForm";
     private static final String REACT_VIEW = "DirectPayTPDForm";
+
     private TPDCard tpdCard;
+    private Handler getPrimeHandler = new Handler();
+    private Runnable getPrimeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (null != tpdCard) {
+                tpdCard.getPrime();
+            }
+
+        }
+    };
+
 
     @Override
     public String getName() {
@@ -36,7 +47,6 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
 
     @Override
     public TPDForm createViewInstance(final ThemedReactContext reactContext) {
-        Log.d(TAG, "createViewInstance() called with: reactContext = [" + reactContext + "]");
 
         final TPDForm tpdform = new TPDForm(reactContext);
 
@@ -46,14 +56,26 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
                 .setup(tpdform)
                 .onSuccessCallback(new TPDCardTokenSuccessCallback() {
                     @Override
-                    public void onSuccess(String s, TPDCardInfo tpdCardInfo, String s1) {
-                        Log.d(TAG, "onSuccess() called with: s = [" + s + "], tpdCardInfo = [" + tpdCardInfo + "], s1 = [" + s1 + "]");
+                    public void onSuccess(String token, TPDCardInfo tpdCardInfo, String cardIdentifier) {
+                        WritableMap event = Arguments.createMap();
+                        event.putBoolean("tpdCardStatus", true);
+                        event.putString("tpdCardToken", token);
+                        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+                                tpdform.getId(), "topChange", event);
+
+                        // Workaround to renew token per 25 seconds
+                        getPrimeHandler.postDelayed(getPrimeRunnable, 25000);
+
                     }
                 })
                 .onFailureCallback(new TPDTokenFailureCallback() {
                     @Override
-                    public void onFailure(int i, String s) {
-                        Log.d(TAG, "onFailure() called with: i = [" + i + "], s = [" + s + "]");
+                    public void onFailure(int status, String reportMsg) {
+                        WritableMap event = Arguments.createMap();
+                        event.putBoolean("tpdCardStatus", false);
+                        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+                                tpdform.getId(), "topChange", event);
+
                     }
                 });
 
@@ -62,7 +84,6 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
 
     @ReactProp(name = "errorColor", customType = "#FF0000")
     public void setTextErrorColor(TPDForm tpdform, String errorColorStr) {
-        Log.d(TAG, "setTextErrorColor() called with: tpdform = [" + tpdform + "], errorColorStr = [" + errorColorStr + "]");
         int errorColor;
         try {
             errorColor = Color.parseColor(errorColorStr);
@@ -97,7 +118,7 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
             @Override
             public void onFormUpdated(TPDStatus tpdStatus) {
                 WritableMap event = Arguments.createMap();
-                event.putString("isEnable", String.valueOf(tpdStatus.isCanGetPrime()));
+                event.putBoolean("isEnable", tpdStatus.isCanGetPrime());
                 reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                         tpdform.getId(), "topChange", event);
 
@@ -106,6 +127,12 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
                 }
             }
         });
-        }
+    }
+
+    @Override
+    public void onDropViewInstance(TPDForm view) {
+        super.onDropViewInstance(view);
+        getPrimeHandler.removeCallbacks(getPrimeRunnable);
+    }
 
 }
