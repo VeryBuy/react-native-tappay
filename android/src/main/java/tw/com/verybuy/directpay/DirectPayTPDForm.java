@@ -50,8 +50,30 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
 
         final TPDForm tpdform = new TPDForm(reactContext);
 
-        onReceiveNativeEvent(reactContext, tpdform);
+        setFormUpdateListener(reactContext, tpdform);
 
+        setTPDCardConfig(reactContext, tpdform);
+
+        return tpdform;
+    }
+
+    private void setFormUpdateListener(final ReactContext reactContext, final TPDForm tpdform) {
+        tpdform.setOnFormUpdateListener(new TPDFormUpdateListener() {
+            @Override
+            public void onFormUpdated(TPDStatus tpdStatus) {
+                WritableMap event = Arguments.createMap();
+                event.putBoolean("isEnable", tpdStatus.isCanGetPrime());
+                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
+                        tpdform.getId(), "topChange", event);
+
+                if (tpdStatus.isCanGetPrime()) {
+                    tpdCard.getPrime();
+                }
+            }
+        });
+    }
+
+    private void setTPDCardConfig(final ReactContext reactContext, final TPDForm tpdform) {
         tpdCard = TPDCard
                 .setup(tpdform)
                 .onSuccessCallback(new TPDCardTokenSuccessCallback() {
@@ -73,13 +95,14 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
                     public void onFailure(int status, String reportMsg) {
                         WritableMap event = Arguments.createMap();
                         event.putBoolean("tpdCardStatus", false);
+                        event.putString("errorMessage", reportMsg);
                         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                                 tpdform.getId(), "topChange", event);
 
                     }
                 });
 
-        return tpdform;
+
     }
 
     @ReactProp(name = "errorColor", customType = "#FF0000")
@@ -97,6 +120,9 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
 
     @ReactProp(name = "isProduction")
     public void setIsProduction(TPDForm tpdForm, boolean isProduction) {
+
+        // Initial Direct Pay Config
+
         ReactContext context = (ReactContext) tpdForm.getContext();
        if (isProduction) {
            TPDSetup.initInstance(context,
@@ -113,21 +139,6 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
        }
     }
 
-    private void onReceiveNativeEvent(final ReactContext reactContext, final TPDForm tpdform) {
-        tpdform.setOnFormUpdateListener(new TPDFormUpdateListener() {
-            @Override
-            public void onFormUpdated(TPDStatus tpdStatus) {
-                WritableMap event = Arguments.createMap();
-                event.putBoolean("isEnable", tpdStatus.isCanGetPrime());
-                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
-                        tpdform.getId(), "topChange", event);
-
-                if (tpdStatus.isCanGetPrime()) {
-                    tpdCard.getPrime();
-                }
-            }
-        });
-    }
 
     @Override
     public void onDropViewInstance(TPDForm view) {
