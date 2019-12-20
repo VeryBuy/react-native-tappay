@@ -63,8 +63,8 @@ public class DirectPayTPDForm extends SimpleViewManager<TPDForm> {
                         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                                 tpdform.getId(), "topChange", event);
 
-                        // Workaround to renew token per 25 seconds
-                        getPrimeHandler.postDelayed(getPrimeRunnable, 25000);
+                        // Workaround to renew token per 20 seconds
+                        getPrimeHandler.postDelayed(getPrimeRunnable, 20000);
 
                     }
                 })
