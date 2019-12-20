@@ -77,7 +77,6 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
     implementation(name: 'tpdirect', ext: 'aar')
-    implementation 'org.jetbrains:annotations-java5:15.0'
 }
 
 def configureReactNativePom(def pom) {
