@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { requireNativeComponent, ViewPropTypes } from 'react-native';
+import { 
+    requireNativeComponent, 
+    ViewPropTypes, 
+    NativeModules 
+} from 'react-native';
 
 let directPayTPDFormProps = {
     name: 'DirectPayTPDForm',
@@ -13,3 +17,5 @@ let directPayTPDFormProps = {
 
 export const DirectPayTPDForm = requireNativeComponent('DirectPayTPDForm', directPayTPDFormProps);
 
+export const TPDCardView = requireNativeComponent('TPDCardView');
+export const TapPay = NativeModules.TapPay;
