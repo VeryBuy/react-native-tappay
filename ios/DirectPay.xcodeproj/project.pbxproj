@@ -7,8 +7,129 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* DirectPay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* DirectPay.m */; };
+		856EEAB823E576B7004A7E23 /* TPDCardViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EEAB723E576B7004A7E23 /* TPDCardViewManager.swift */; };
+		856EEABA23E576C3004A7E23 /* TPDCardViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 856EEAB923E576C3004A7E23 /* TPDCardViewManager.m */; };
+		856EEAEA23E5C624004A7E23 /* TPDCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EEAE923E5C624004A7E23 /* TPDCardView.swift */; };
+		856EEB0E23E5E2EC004A7E23 /* TapPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0D23E5E2EC004A7E23 /* TapPay.swift */; };
+		856EEB1023E5E2F8004A7E23 /* TapPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0F23E5E2F8004A7E23 /* TapPay.m */; };
+		8586800323E4331C004CDED7 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85867FF223E4331C004CDED7 /* TPDirect.framework */; };
+		85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F1F5F423E2E21F005546B0 /* libReact.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		85F1F5F323E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
+			remoteInfo = React;
+		};
+		85F1F5F523E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
+			remoteInfo = "React-tvOS";
+		};
+		85F1F5F723E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C059A1DE3340900C268FA;
+			remoteInfo = yoga;
+		};
+		85F1F5F923E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C06751DE3340C00C268FA;
+			remoteInfo = "yoga-tvOS";
+		};
+		85F1F5FB23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9251DE5FBEC00167DC4;
+			remoteInfo = cxxreact;
+		};
+		85F1F5FD23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
+			remoteInfo = "cxxreact-tvOS";
+		};
+		85F1F5FF23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BDC1FC498900052F4D5;
+			remoteInfo = jsinspector;
+		};
+		85F1F60123E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
+			remoteInfo = "jsinspector-tvOS";
+		};
+		85F1F60323E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7ECE1E25DB7D00323FB7;
+			remoteInfo = "third-party";
+		};
+		85F1F60523E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D3C1EBD27B6005632C8;
+			remoteInfo = "third-party-tvOS";
+		};
+		85F1F60723E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7E881E25C6D100323FB7;
+			remoteInfo = "double-conversion";
+		};
+		85F1F60923E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
+			remoteInfo = "double-conversion-tvOS";
+		};
+		85F1F60B23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
+			remoteInfo = jsi;
+		};
+		85F1F60D23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
+			remoteInfo = jsiexecutor;
+		};
+		85F1F60F23E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
+			remoteInfo = "jsi-tvOS";
+		};
+		85F1F61123E2E21F005546B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
+			remoteInfo = "jsiexecutor-tvOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -24,8 +145,30 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libDirectPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDirectPay.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* DirectPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectPay.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* DirectPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectPay.m; sourceTree = "<group>"; };
+		856EEAB723E576B7004A7E23 /* TPDCardViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPDCardViewManager.swift; sourceTree = "<group>"; };
+		856EEAB923E576C3004A7E23 /* TPDCardViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPDCardViewManager.m; sourceTree = "<group>"; };
+		856EEAE923E5C624004A7E23 /* TPDCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPDCardView.swift; sourceTree = "<group>"; };
+		856EEB0D23E5E2EC004A7E23 /* TapPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPay.swift; sourceTree = "<group>"; };
+		856EEB0F23E5E2F8004A7E23 /* TapPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TapPay.m; sourceTree = "<group>"; };
+		85867FF223E4331C004CDED7 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
+		8586803D23E4446E004CDED7 /* card_jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_jcb.png; sourceTree = "<group>"; };
+		8586803E23E4446E004CDED7 /* card_amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_amex@2x.png"; sourceTree = "<group>"; };
+		8586803F23E4446E004CDED7 /* card_visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_visa.png; sourceTree = "<group>"; };
+		8586804023E4446E004CDED7 /* card_amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_amex@3x.png"; sourceTree = "<group>"; };
+		8586804123E4446E004CDED7 /* card_mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_mastercard.png; sourceTree = "<group>"; };
+		8586804223E4446E004CDED7 /* card_unknown@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown@3x.png"; sourceTree = "<group>"; };
+		8586804323E4446E004CDED7 /* card_jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_jcb@3x.png"; sourceTree = "<group>"; };
+		8586804423E4446E004CDED7 /* card_union_pay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_union_pay.png; sourceTree = "<group>"; };
+		8586804523E4446E004CDED7 /* card_jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_jcb@2x.png"; sourceTree = "<group>"; };
+		8586804623E4446E004CDED7 /* card_unknown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown@2x.png"; sourceTree = "<group>"; };
+		8586804723E4446E004CDED7 /* card_amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_amex.png; sourceTree = "<group>"; };
+		8586804823E4446E004CDED7 /* card_unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_unknown.png; sourceTree = "<group>"; };
+		8586804923E4446E004CDED7 /* card_mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_mastercard@3x.png"; sourceTree = "<group>"; };
+		8586804A23E4446E004CDED7 /* card_visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_visa@2x.png"; sourceTree = "<group>"; };
+		8586804B23E4446E004CDED7 /* card_visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_visa@3x.png"; sourceTree = "<group>"; };
+		8586804C23E4446E004CDED7 /* card_mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_mastercard@2x.png"; sourceTree = "<group>"; };
+		85F1F5E023E2E21F005546B0 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		85F1F61423E2E320005546B0 /* DirectPay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DirectPay-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +176,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8586800323E4331C004CDED7 /* TPDirect.framework in Frameworks */,
+				85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,10 +195,79 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* DirectPay.h */,
-				B3E7B5891CC2AC0600A0062D /* DirectPay.m */,
+				856EEB0F23E5E2F8004A7E23 /* TapPay.m */,
+				856EEB0D23E5E2EC004A7E23 /* TapPay.swift */,
+				856EEAE923E5C624004A7E23 /* TPDCardView.swift */,
+				856EEAB923E576C3004A7E23 /* TPDCardViewManager.m */,
+				856EEAB723E576B7004A7E23 /* TPDCardViewManager.swift */,
+				8586803B23E4446E004CDED7 /* TPDirectResource */,
+				85F1F61423E2E320005546B0 /* DirectPay-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				85F1F5DF23E2E21F005546B0 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		8586803B23E4446E004CDED7 /* TPDirectResource */ = {
+			isa = PBXGroup;
+			children = (
+				8586803C23E4446E004CDED7 /* Image */,
+			);
+			path = TPDirectResource;
+			sourceTree = "<group>";
+		};
+		8586803C23E4446E004CDED7 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				8586803D23E4446E004CDED7 /* card_jcb.png */,
+				8586803E23E4446E004CDED7 /* card_amex@2x.png */,
+				8586803F23E4446E004CDED7 /* card_visa.png */,
+				8586804023E4446E004CDED7 /* card_amex@3x.png */,
+				8586804123E4446E004CDED7 /* card_mastercard.png */,
+				8586804223E4446E004CDED7 /* card_unknown@3x.png */,
+				8586804323E4446E004CDED7 /* card_jcb@3x.png */,
+				8586804423E4446E004CDED7 /* card_union_pay.png */,
+				8586804523E4446E004CDED7 /* card_jcb@2x.png */,
+				8586804623E4446E004CDED7 /* card_unknown@2x.png */,
+				8586804723E4446E004CDED7 /* card_amex.png */,
+				8586804823E4446E004CDED7 /* card_unknown.png */,
+				8586804923E4446E004CDED7 /* card_mastercard@3x.png */,
+				8586804A23E4446E004CDED7 /* card_visa@2x.png */,
+				8586804B23E4446E004CDED7 /* card_visa@3x.png */,
+				8586804C23E4446E004CDED7 /* card_mastercard@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		85F1F5DF23E2E21F005546B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				85867FF223E4331C004CDED7 /* TPDirect.framework */,
+				85F1F5E023E2E21F005546B0 /* React.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		85F1F5E123E2E21F005546B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				85F1F5F423E2E21F005546B0 /* libReact.a */,
+				85F1F5F623E2E21F005546B0 /* libReact.a */,
+				85F1F5F823E2E21F005546B0 /* libyoga.a */,
+				85F1F5FA23E2E21F005546B0 /* libyoga.a */,
+				85F1F5FC23E2E21F005546B0 /* libcxxreact.a */,
+				85F1F5FE23E2E21F005546B0 /* libcxxreact.a */,
+				85F1F60023E2E21F005546B0 /* libjsinspector.a */,
+				85F1F60223E2E21F005546B0 /* libjsinspector-tvOS.a */,
+				85F1F60423E2E21F005546B0 /* libthird-party.a */,
+				85F1F60623E2E21F005546B0 /* libthird-party.a */,
+				85F1F60823E2E21F005546B0 /* libdouble-conversion.a */,
+				85F1F60A23E2E21F005546B0 /* libdouble-conversion.a */,
+				85F1F60C23E2E21F005546B0 /* libjsi.a */,
+				85F1F60E23E2E21F005546B0 /* libjsiexecutor.a */,
+				85F1F61023E2E21F005546B0 /* libjsi-tvOS.a */,
+				85F1F61223E2E21F005546B0 /* libjsiexecutor-tvOS.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +301,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -95,11 +310,18 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 85F1F5E123E2E21F005546B0 /* Products */;
+					ProjectRef = 85F1F5E023E2E21F005546B0 /* React.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* DirectPay */,
@@ -107,12 +329,131 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		85F1F5F423E2E21F005546B0 /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = 85F1F5F323E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F5F623E2E21F005546B0 /* libReact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReact.a;
+			remoteRef = 85F1F5F523E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F5F823E2E21F005546B0 /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = 85F1F5F723E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F5FA23E2E21F005546B0 /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = 85F1F5F923E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F5FC23E2E21F005546B0 /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = 85F1F5FB23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F5FE23E2E21F005546B0 /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = 85F1F5FD23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60023E2E21F005546B0 /* libjsinspector.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsinspector.a;
+			remoteRef = 85F1F5FF23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60223E2E21F005546B0 /* libjsinspector-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsinspector-tvOS.a";
+			remoteRef = 85F1F60123E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60423E2E21F005546B0 /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = 85F1F60323E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60623E2E21F005546B0 /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = 85F1F60523E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60823E2E21F005546B0 /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = 85F1F60723E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60A23E2E21F005546B0 /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = 85F1F60923E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60C23E2E21F005546B0 /* libjsi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsi.a;
+			remoteRef = 85F1F60B23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F60E23E2E21F005546B0 /* libjsiexecutor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsiexecutor.a;
+			remoteRef = 85F1F60D23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F61023E2E21F005546B0 /* libjsi-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsi-tvOS.a";
+			remoteRef = 85F1F60F23E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		85F1F61223E2E21F005546B0 /* libjsiexecutor-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsiexecutor-tvOS.a";
+			remoteRef = 85F1F61123E2E21F005546B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* DirectPay.m in Sources */,
+				856EEAEA23E5C624004A7E23 /* TPDCardView.swift in Sources */,
+				856EEAB823E576B7004A7E23 /* TPDCardViewManager.swift in Sources */,
+				856EEB1023E5E2F8004A7E23 /* TapPay.m in Sources */,
+				856EEB0E23E5E2EC004A7E23 /* TapPay.swift in Sources */,
+				856EEABA23E576C3004A7E23 /* TPDCardViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,32 +556,49 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
-					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
-					"$(SRCROOT)/../../react-native/React/**",
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DirectPay;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		58B511F11A9E6C8500147676 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = DirectPay;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DirectPay-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DirectPay;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "DirectPay-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
