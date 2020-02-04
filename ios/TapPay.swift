@@ -13,6 +13,7 @@ import AdSupport
 class TapPay: NSObject {
     static var tpdCard: TPDCard?
     
+    
     @objc
     func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
         let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
@@ -23,17 +24,26 @@ class TapPay: NSObject {
     }
     
     @objc
-    func getDirectPayPrime(_ onSuccess: @escaping RCTResponseSenderBlock, onFailure: @escaping RCTResponseSenderBlock) {
+    func getDirectPayPrime(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         if let tpdCard = TapPay.tpdCard {
             tpdCard.onSuccessCallback { (prime, cardInfo, cardIdentifier) in
-                onSuccess([
-                    prime!
-                ])
+                if
+                    let directPayPrime = prime, directPayPrime != "",
+                    let creditCardInfo = cardInfo,
+                    let creditCardIdentifier = cardIdentifier
+                {
+                    resolve([
+                        "prime": directPayPrime,
+                        "binCode": creditCardInfo.bincode ?? "",
+                        "lastFour": creditCardInfo.lastFour ?? "",
+                        "issuer": creditCardInfo.issuer ?? "",
+                        "cardType": creditCardInfo.cardType,
+                        "funding": creditCardInfo.funding,
+                        "cardIdentifier": creditCardIdentifier
+                    ])
+                }
             }.onFailureCallback { (status, message) in
-                onFailure([
-                    status,
-                    message
-                ])
+                reject(String(status), message, nil)
             }.getPrime()
         }
     }
