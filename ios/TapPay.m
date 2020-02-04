@@ -12,6 +12,6 @@
 RCT_EXTERN_METHOD(setup: (nonnull NSNumber*)appId
                   appKey: (NSString*)appkey
                   serverType: (NSString*)serverType)
-RCT_EXTERN_METHOD(getDirectPayPrime: (RCTResponseSenderBlock)onSuccess
-                  onFailure: (RCTResponseSenderBlock)onFailure)
+RCT_EXTERN_METHOD(getDirectPayPrime: (RCTPromiseResolveBlock)resolve 
+                  rejecter: (RCTPromiseRejectBlock)reject)
 @end
