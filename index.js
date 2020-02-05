@@ -1,48 +1,38 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { 
-    requireNativeComponent, 
-    ViewPropTypes, 
-    NativeModules 
+    requireNativeComponent,
+    NativeModules
 } from 'react-native';
 
-let directPayTPDFormProps = {
-    name: 'DirectPayTPDForm',
-    propTypes: {
-        errorColor: PropTypes.string,
-        isProduction: PropTypes.bool,
-        ...ViewPropTypes,
-    },
-};
+const DirectPayForm = requireNativeComponent('DirectPayTPDForm');
 
-export const DirectPayTPDForm = requireNativeComponent('DirectPayTPDForm', directPayTPDFormProps);
-
-const CardView = requireNativeComponent('TPDCardView');
-
-export class TPDCardView extends Component {
-    _onUpdate = (event) => {
-        if (!this.props.onUpdate) {
+export class DirectPayTPDForm extends Component {
+    _onChange = (event) => {
+        if (!this.props.onChange) {
             return ;
         }
 
-        this.props.onUpdate(event.nativeEvent.canGetPrime);
+        this.props.onChange(event);
     }
 
     render() {
         return (
-            <CardView
+            <DirectPayForm 
                 {...this.props}
-                onUpdate={this._onUpdate}
+                onChange={this._onChange}   // Android form update event
+                onUpdate={this._onChange}   // iOS form update event
             />
         )
     }
 }
 
-TPDCardView.propTypes = {
+DirectPayTPDForm.propTypes = {
     errorColor: PropTypes.string,
-    okColor: PropTypes.string,
-    normalColor: PropTypes.string,
-    onUpdate: PropTypes.func
-};
+    okColor: PropTypes.string,      // Only iOS support
+    normalColor: PropTypes.string,  // Only iOS support
+    isProduction: PropTypes.bool,   // Only Android support
+    onChange: PropTypes.func
+}
 
-export const TapPay = NativeModules.TapPay;
+export const TapPay = NativeModules.TapPay;     // Only iOS support

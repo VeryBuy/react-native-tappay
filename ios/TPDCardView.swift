@@ -43,7 +43,7 @@ class TPDCardView: UIView {
         tpdForm.setNormalColor(makeUIColor(withHexColorCode: normalColor as String))
         tpdForm.onFormUpdated { [weak self] status in
             if let event = self?.onUpdate {
-                event(["canGetPrime": status.isCanGetPrime()])
+                event(["isEnable": status.isCanGetPrime()])
             }
         }
         self.addSubview(cardView)
