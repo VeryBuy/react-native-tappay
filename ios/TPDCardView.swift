@@ -35,7 +35,7 @@ class TPDCardView: UIView {
         let cardView: UIView = UIView(frame: CGRect.zero)
         cardView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tpdForm = TPDForm.setup(withContainer: cardView)
-        TapPay.tpdCard = TPDCard.setup(tpdForm)
+//        TapPay.tpdCard = TPDCard.setup(tpdForm)
         
         super.init(frame: frame)
         tpdForm.setErrorColor(makeUIColor(withHexColorCode: errorColor as String))
@@ -76,6 +76,6 @@ class TPDCardView: UIView {
     }
     
     deinit {
-        TapPay.tpdCard = nil
+//        TapPay.tpdCard = nil
     }
 }
