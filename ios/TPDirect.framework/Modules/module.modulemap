@@ -1,0 +1,6 @@
+framework module TPDirect {
+  umbrella header "TPDirect.h"
+
+  export *
+  module * { export * }
+}
