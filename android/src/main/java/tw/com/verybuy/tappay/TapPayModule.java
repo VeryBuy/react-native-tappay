@@ -10,7 +10,8 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.IllegalViewOperationException;
 
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 import tech.cherri.tpdirect.api.TPDCard;
 import tech.cherri.tpdirect.api.TPDCardInfo;
@@ -27,6 +28,14 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
     private TPDCard tpdCard;
+    private final HashMap<TPDCard.CardType, Integer> cardTypes = new HashMap<TPDCard.CardType, Integer>() {{
+        put(TPDCard.CardType.Unknown, -1);
+        put(TPDCard.CardType.Visa, 1);
+        put(TPDCard.CardType.MasterCard, 2);
+        put(TPDCard.CardType.UnionPay, 3);
+        put(TPDCard.CardType.JCB, 4);
+        put(TPDCard.CardType.AmericanExpress, 5);
+    }};
 
     public TapPayModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -64,14 +73,9 @@ public class TapPayModule extends ReactContextBaseJavaModule {
             map.putBoolean("isCardNumberValid", result.isCardNumberValid());
             map.putBoolean("isExpiryDateValid", result.isExpiryDateValid());
             map.putBoolean("isCCVValid", result.isCCVValid());
-            // map.putBoolean("getCardType", result.getCardType());
+            map.putInt("cardType", this.cardTypes.get(result.getCardType()));
 
-            if (result.isCardNumberValid() && result.isExpiryDateValid() && result.isCCVValid()) {
-
-                promise.resolve(map);
-            } else {
-                promise.reject("invalid", map);
-            }
+            promise.resolve(map);
 
         } catch (IllegalViewOperationException e) {
             promise.reject("TPDCard.validate Error", e);
