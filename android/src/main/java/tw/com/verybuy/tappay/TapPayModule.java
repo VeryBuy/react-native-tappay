@@ -32,8 +32,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
         put(TPDCard.CardType.Unknown, -1);
         put(TPDCard.CardType.Visa, 1);
         put(TPDCard.CardType.MasterCard, 2);
-        put(TPDCard.CardType.UnionPay, 3);
-        put(TPDCard.CardType.JCB, 4);
+        put(TPDCard.CardType.JCB, 3);
+        put(TPDCard.CardType.UnionPay, 4);
         put(TPDCard.CardType.AmericanExpress, 5);
     }};
 
@@ -112,12 +112,12 @@ public class TapPayModule extends ReactContextBaseJavaModule {
                         String cardLastFour = tpdCardInfo.getLastFour();
                         WritableMap map = Arguments.createMap();
                         map.putString("prime", token);
-                        map.putString("binCode", tpdCardInfo.getBincode());
-                        map.putString("lastFour", tpdCardInfo.getLastFour());
+                        map.putString("bincode", tpdCardInfo.getBincode());
+                        map.putString("lastfour", tpdCardInfo.getLastFour());
                         map.putString("issuer", tpdCardInfo.getIssuer());
-                        map.putInt("cardType", tpdCardInfo.getCardType());
+                        map.putInt("type", tpdCardInfo.getCardType());
                         map.putInt("funding", tpdCardInfo.getFunding());
-                        map.putString("cardIdentifier", cardIdentifier);
+                        map.putString("cardidentifier", cardIdentifier);
                         promise.resolve(map);
                     }
                 }).onFailureCallback(new TPDTokenFailureCallback() {
