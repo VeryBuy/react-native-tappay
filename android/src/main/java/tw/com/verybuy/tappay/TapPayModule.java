@@ -71,7 +71,7 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
             WritableMap map = Arguments.createMap();
             map.putBoolean("isCardNumberValid", result.isCardNumberValid());
-            map.putBoolean("isExpiryDateValid", result.isExpiryDateValid());
+            map.putBoolean("isExpiredDateValid", result.isExpiryDateValid());
             map.putBoolean("isCCVValid", result.isCCVValid());
             map.putInt("cardType", this.cardTypes.get(result.getCardType()));
 
