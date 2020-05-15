@@ -119,7 +119,7 @@ class TapPay: NSObject {
                         "bincode": creditCardInfo.bincode ?? "",
                         "lastfour": creditCardInfo.lastFour ?? "",
                         "issuer": creditCardInfo.issuer ?? "",
-                        "cardtype": creditCardInfo.cardType,
+                        "type": creditCardInfo.cardType,
                         "funding": creditCardInfo.funding,
                         "cardidentifier": creditCardIdentifier
                     ])
