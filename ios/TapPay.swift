@@ -116,12 +116,12 @@ class TapPay: NSObject {
                 {
                     resolve([
                         "prime": directPayPrime,
-                        "binCode": creditCardInfo.bincode ?? "",
-                        "lastFour": creditCardInfo.lastFour ?? "",
+                        "bincode": creditCardInfo.bincode ?? "",
+                        "lastfour": creditCardInfo.lastFour ?? "",
                         "issuer": creditCardInfo.issuer ?? "",
-                        "cardType": creditCardInfo.cardType,
+                        "cardtype": creditCardInfo.cardType,
                         "funding": creditCardInfo.funding,
-                        "cardIdentifier": creditCardIdentifier
+                        "cardidentifier": creditCardIdentifier
                     ])
                 }
             }.onFailureCallback { (status, message) in
