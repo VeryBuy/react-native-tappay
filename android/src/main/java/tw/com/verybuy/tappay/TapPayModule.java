@@ -28,6 +28,11 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
     private TPDCard tpdCard;
+    private String cardNumber;
+    private String dueMonth;
+    private String dueYear;
+    private String CCV;
+
     private final HashMap<TPDCard.CardType, Integer> cardTypes = new HashMap<TPDCard.CardType, Integer>() {{
         put(TPDCard.CardType.Unknown, -1);
         put(TPDCard.CardType.Visa, 1);
@@ -86,18 +91,27 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void setCard(String cardNumber, String dueMonth, String dueYear, String CCV, Promise promise) {
-
+        this.cardNumber = cardNumber;
+        this.dueMonth = dueMonth;
+        this.dueYear = dueYear;
+        this.CCV = CCV;
 
         this.tpdCard = new TPDCard(this.reactContext,
                 new StringBuffer(cardNumber),
                 new StringBuffer(dueMonth),
                 new StringBuffer(dueYear),
                 new StringBuffer(CCV));
+
+
     }
 
     @ReactMethod
     public void removeCard() {
         this.tpdCard = null;
+        this.cardNumber = null;
+        this.dueMonth = null;
+        this.dueYear = null;
+        this.CCV = null;
     }
 
 
@@ -106,6 +120,11 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
         if (null != this.tpdCard) {
             try {
+                this.tpdCard = new TPDCard(this.reactContext,
+                        new StringBuffer(this.cardNumber),
+                        new StringBuffer(this.dueMonth),
+                        new StringBuffer(this.dueYear),
+                        new StringBuffer(this.CCV));
                 this.tpdCard.onSuccessCallback(new TPDCardTokenSuccessCallback() {
                     @Override
                     public void onSuccess(String token, TPDCardInfo tpdCardInfo, String cardIdentifier) {
@@ -130,6 +149,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
             } catch (IllegalViewOperationException e) {
                 promise.reject("TPDCard.createToken Error", e);
             }
+        }else {
+            promise.reject("-1", "TPDCard is null");
         }
     }
 
