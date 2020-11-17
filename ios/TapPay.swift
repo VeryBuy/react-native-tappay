@@ -24,7 +24,7 @@ class TapPay: NSObject {
     private var tpdLinePay: TPDLinePay?
     
     @objc
-    func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString, returnUrl: NSString) {
+    func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
         let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
         TPDSetup.setWithAppId(appId.int32Value, withAppKey: appKey as String, with: serverType)
         let IDFA = ASIdentifierManager.shared().advertisingIdentifier.uuidString
@@ -94,9 +94,11 @@ class TapPay: NSObject {
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) {
         let tpdLinePay = TPDLinePay.setup(withReturnUrl: returnUrl)
-        tpdLinePay.onSuccessCallback{(prime) in resolve([ "prime": prime ])}.onFailureCallback{
-            (status, message) in reject(String(status), message, nil)
-        }.getPrime()
+        if (TPDLinePay.isLinePayAvailable()){
+            tpdLinePay.onSuccessCallback{(prime) in resolve([ "prime": prime ])}.onFailureCallback{
+                (status, message) in reject(String(status), message, nil)
+            }.getPrime()
+        }
     }
     
     @objc

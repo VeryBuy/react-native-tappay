@@ -17,6 +17,7 @@ import tech.cherri.tpdirect.api.TPDCard;
 import tech.cherri.tpdirect.api.TPDCardInfo;
 import tech.cherri.tpdirect.api.TPDCardValidationResult;
 import tech.cherri.tpdirect.api.TPDSetup;
+import tech.cherri.tpdirect.api.TPDLinePay;
 import tech.cherri.tpdirect.api.TPDServerType;
 import tech.cherri.tpdirect.callback.TPDCardTokenSuccessCallback;
 import tech.cherri.tpdirect.callback.TPDTokenSuccessCallback;
@@ -154,4 +155,14 @@ public class TapPayModule extends ReactContextBaseJavaModule {
         }
     }
 
+    @ReactMethod
+    public void getLinePayPrime(String returnUrl, final Promise promise) {
+        boolean isLinePayAvailable = TPDLinePay.isLinePayAvailable(Context context);
+
+        TPDLinePay tpdLinePay = new TPDLinePay(Context context, returnUrl);
+
+        if (isLinePayAvailable) {
+            tpdLinePay.getPrime(Promise.resolve, Promise.reject)
+        }
+    }
 }
