@@ -22,7 +22,7 @@ import tech.cherri.tpdirect.api.TPDServerType;
 import tech.cherri.tpdirect.callback.TPDCardTokenSuccessCallback;
 import tech.cherri.tpdirect.callback.TPDTokenSuccessCallback;
 import tech.cherri.tpdirect.callback.TPDTokenFailureCallback;
-
+import tech.cherri.tpdirect.exception.TPDLinePayException;
 
 
 public class TapPayModule extends ReactContextBaseJavaModule {
@@ -33,6 +33,7 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     private String dueMonth;
     private String dueYear;
     private String CCV;
+    private TPDLinePay tpdLinePay;
 
     private final HashMap<TPDCard.CardType, Integer> cardTypes = new HashMap<TPDCard.CardType, Integer>() {{
         put(TPDCard.CardType.Unknown, -1);
@@ -156,13 +157,32 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getLinePayPrime(String returnUrl, final Promise promise) {
-        boolean isLinePayAvailable = TPDLinePay.isLinePayAvailable(Context context);
+    public void getLinePayPrime(String returnUrl, final Promise promise) throws TPDLinePayException {
+        boolean isLinePayAvailable = TPDLinePay.isLinePayAvailable(this.reactContext);
 
-        TPDLinePay tpdLinePay = new TPDLinePay(Context context, returnUrl);
 
         if (isLinePayAvailable) {
-            tpdLinePay.getPrime(Promise.resolve, Promise.reject)
+            try {
+                tpdLinePay = new TPDLinePay(this.reactContext, returnUrl);
+
+                tpdLinePay.getPrime(new TPDTokenSuccessCallback() {
+                    @Override
+                    public void onSuccess(String prime, TPDCardInfo tpdCardInfo) {
+                        WritableMap map = Arguments.createMap();
+                        map.putString("prime", prime);
+
+                        promise.resolve(map);
+                    }
+                }, new TPDTokenFailureCallback() {
+                    @Override
+                    public void onFailure(int status, String reportMsg) {
+                        //Failure
+                        promise.reject(String.valueOf(status), reportMsg);
+                    }
+                });
+            } catch (TPDLinePayException e) {
+                promise.reject("Fail", e.getMessage());
+            }
         }
     }
 }
