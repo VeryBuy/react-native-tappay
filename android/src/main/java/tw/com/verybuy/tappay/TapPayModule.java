@@ -116,7 +116,6 @@ public class TapPayModule extends ReactContextBaseJavaModule {
         this.CCV = null;
     }
 
-
     @ReactMethod
     public void getDirectPayPrime(final Promise promise) {
 
@@ -157,9 +156,18 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public Boolean isLinePayAvailable() {
+        boolean isLinePayInstall = TPDLinePay.isLinePayAvailable(this.reactContext);
+        if (isLinePayInstall) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @ReactMethod
     public void getLinePayPrime(String returnUrl, final Promise promise) throws TPDLinePayException {
         boolean isLinePayAvailable = TPDLinePay.isLinePayAvailable(this.reactContext);
-
 
         if (isLinePayAvailable) {
             try {
