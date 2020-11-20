@@ -32,6 +32,8 @@ RCT_EXTERN_METHOD(getLinePayPrime: (NSString*)returnUrl
                   resolver: (RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(isLinePayAvailable)
+
 RCT_EXTERN_METHOD(setCard: (NSString*)cardNumber
                   withDueMonth: (NSString*)dueMonth
                   withDueYear: (NSString*)dueYear

@@ -102,6 +102,14 @@ class TapPay: NSObject {
     }
     
     @objc
+    func isLinePayAvailable() -> Bool {
+        if (TPDLinePay.isLinePayAvailable()) {
+            return true
+        }
+        return false
+    }
+    
+    @objc
     func setCard(
         _ cardNumber: String,
         withDueMonth dueMonth: String,
