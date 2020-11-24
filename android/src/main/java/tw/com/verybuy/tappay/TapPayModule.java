@@ -186,6 +186,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
             } catch (TPDLinePayException e) {
                 promise.reject("Fail", e.getMessage());
             }
+        } else {
+            promise.reject("Fail", "Line Pay is not exist.");
         }
     }
 }
