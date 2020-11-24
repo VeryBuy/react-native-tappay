@@ -156,13 +156,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public Boolean isLinePayAvailable() {
-        boolean isLinePayInstall = TPDLinePay.isLinePayAvailable(this.reactContext);
-        if (isLinePayInstall) {
-            return true;
-        }
-
-        return false;
+    public boolean isLinePayAvailable() {
+        return TPDLinePay.isLinePayAvailable(this.reactContext);
     }
 
     @ReactMethod

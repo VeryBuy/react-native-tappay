@@ -103,10 +103,7 @@ class TapPay: NSObject {
     
     @objc
     func isLinePayAvailable() -> Bool {
-        if (TPDLinePay.isLinePayAvailable()) {
-            return true
-        }
-        return false
+        return TPDLinePay.isLinePayAvailable()
     }
     
     @objc
