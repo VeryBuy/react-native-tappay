@@ -98,6 +98,8 @@ class TapPay: NSObject {
             tpdLinePay.onSuccessCallback{(prime) in resolve([ "prime": prime ])}.onFailureCallback{
                 (status, message) in reject(String(status), message, nil)
             }.getPrime()
+        } else {
+            reject(String("Fail"), String("Line Pay is not exist."), nil)
         }
     }
     
