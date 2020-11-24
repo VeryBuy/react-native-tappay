@@ -21,6 +21,7 @@ class TapPay: NSObject {
     ]
     
     private var tpdCard: TPDCard?
+    private var tpdLinePay: TPDLinePay?
     
     @objc
     func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
@@ -84,6 +85,28 @@ class TapPay: NSObject {
         }.onFailureCallback { (status, message) in
             reject(String(status), message, nil)
         }.createToken(withGeoLocation: "UNKNOWN")
+    }
+    
+    @objc
+    func getLinePayPrime(
+        _ returnUrl: String,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        let tpdLinePay = TPDLinePay.setup(withReturnUrl: returnUrl)
+        if (TPDLinePay.isLinePayAvailable()){
+            tpdLinePay.onSuccessCallback{(prime) in resolve([ "prime": prime ])}.onFailureCallback{
+                (status, message) in reject(String(status), message, nil)
+            }.getPrime()
+        }
+    }
+    
+    @objc
+    func isLinePayAvailable() -> Bool {
+        if (TPDLinePay.isLinePayAvailable()) {
+            return true
+        }
+        return false
     }
     
     @objc

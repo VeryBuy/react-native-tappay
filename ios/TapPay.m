@@ -28,6 +28,11 @@ _RCT_EXTERN_REMAP_METHOD(getDirectPayPrimeWithCardData,
                          resolver: (RCTPromiseResolveBlock)resolve
                          rejecter: (RCTPromiseRejectBlock)reject,
                          NO)
+RCT_EXTERN_METHOD(getLinePayPrime: (NSString*)returnUrl
+                  resolver: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(isLinePayAvailable)
 
 RCT_EXTERN_METHOD(setCard: (NSString*)cardNumber
                   withDueMonth: (NSString*)dueMonth
