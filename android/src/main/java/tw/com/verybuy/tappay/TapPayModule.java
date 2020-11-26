@@ -156,13 +156,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public Boolean isLinePayAvailable() {
-        boolean isLinePayInstall = TPDLinePay.isLinePayAvailable(this.reactContext);
-        if (isLinePayInstall) {
-            return true;
-        }
-
-        return false;
+    public void isLinePayAvailable(final Promise promise) throws TPDLinePayException {
+        promise.resolve(TPDLinePay.isLinePayAvailable(this.reactContext));
     }
 
     @ReactMethod
@@ -191,6 +186,8 @@ public class TapPayModule extends ReactContextBaseJavaModule {
             } catch (TPDLinePayException e) {
                 promise.reject("Fail", e.getMessage());
             }
+        } else {
+            promise.reject("Fail", "Line Pay is not exist.");
         }
     }
 }

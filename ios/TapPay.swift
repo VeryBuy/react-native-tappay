@@ -98,15 +98,15 @@ class TapPay: NSObject {
             tpdLinePay.onSuccessCallback{(prime) in resolve([ "prime": prime ])}.onFailureCallback{
                 (status, message) in reject(String(status), message, nil)
             }.getPrime()
+        } else {
+            reject(String("Fail"), String("Line Pay is not exist."), nil)
         }
     }
     
     @objc
-    func isLinePayAvailable() -> Bool {
-        if (TPDLinePay.isLinePayAvailable()) {
-            return true
-        }
-        return false
+    func isLinePayAvailable(_ promise: RCTPromiseResolveBlock, rejector reject: RCTPromiseRejectBlock) {
+
+        promise(TPDLinePay.isLinePayAvailable())
     }
     
     @objc
