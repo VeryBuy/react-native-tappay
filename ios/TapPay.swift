@@ -104,8 +104,9 @@ class TapPay: NSObject {
     }
     
     @objc
-    func isLinePayAvailable() -> Bool {
-        return TPDLinePay.isLinePayAvailable()
+    func isLinePayAvailable(_ promise: RCTPromiseResolveBlock, rejector reject: RCTPromiseRejectBlock) {
+
+        promise(TPDLinePay.isLinePayAvailable())
     }
     
     @objc
