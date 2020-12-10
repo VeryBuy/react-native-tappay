@@ -16,6 +16,7 @@ export interface TapPayInstance {
   removeCard: () => void;
   getLinePayPrime: (returnUrl: string) => Promise<{ prime: string | null }>;
   isLinePayAvailable: () => Promise<boolean>;
+  handleLinePayURL: (url: string) => Promise<boolean>;
 }
 
 declare const TapPay: TapPayInstance;
