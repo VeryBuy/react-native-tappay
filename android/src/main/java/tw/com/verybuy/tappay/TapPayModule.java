@@ -189,25 +189,25 @@ public class TapPayModule extends ReactContextBaseJavaModule {
                 promise.reject("Fail", e.getMessage());
             }
         } else {
-            promise.reject("Fail", "Line Pay is not exist.");
+            promise.reject("Fail", "LINE pay is not exist.");
         }
     }
 
     @ReactMethod
-    public void handleLinePayURL(String url, final Promise promise)throws  TPDLinePayException {
-        tpdLinePay.parseToLinePayResult(this.reactContext, this.reactContext.getCurrentActivity().getIntent().getData(), new TPDLinePayResultListener(){
+    public void handleLinePayURL(String url, final Promise promise) throws TPDLinePayException {
+        tpdLinePay.parseToLinePayResult(this.reactContext, this.reactContext.getCurrentActivity().getIntent().getData(), new TPDLinePayResultListener() {
             @Override
             public void onParseSuccess(TPDLinePayResult tpdLinePayResult) {
-                if (tpdLinePayResult.getStatus() == 0) {
+                if (tpdLinePayResult != null && tpdLinePayResult.getStatus() == 0) {
                     promise.resolve(true);
                 } else {
-                    promise.reject("Fail", "Translate is fail.");
+                    promise.reject("Fail", "LINE pay transaction is fail.");
                 }
             }
 
             @Override
-            public void onParseFail(int i, String s) {
-                promise.reject("Fail", s);
+            public void onParseFail(int status, String message) {
+                promise.reject("Fail", message);
             }
         });
     }
