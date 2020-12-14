@@ -110,6 +110,19 @@ class TapPay: NSObject {
     }
     
     @objc
+    func handleLinePayURL(
+        _ url: String,
+        resolver resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) {
+        if let redirectURL = URL(string: url), TPDLinePay.handle(redirectURL) {
+            resolve(true)
+        } else {
+            reject("Fail", "LINE Pay transaction fail.", nil)
+        }
+    }
+    
+    @objc
     func setCard(
         _ cardNumber: String,
         withDueMonth dueMonth: String,
