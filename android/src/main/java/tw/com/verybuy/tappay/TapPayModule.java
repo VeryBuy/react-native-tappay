@@ -16,10 +16,12 @@ import java.util.Map;
 import tech.cherri.tpdirect.api.TPDCard;
 import tech.cherri.tpdirect.api.TPDCardInfo;
 import tech.cherri.tpdirect.api.TPDCardValidationResult;
+import tech.cherri.tpdirect.api.TPDLinePayResult;
 import tech.cherri.tpdirect.api.TPDSetup;
 import tech.cherri.tpdirect.api.TPDLinePay;
 import tech.cherri.tpdirect.api.TPDServerType;
 import tech.cherri.tpdirect.callback.TPDCardTokenSuccessCallback;
+import tech.cherri.tpdirect.callback.TPDLinePayResultListener;
 import tech.cherri.tpdirect.callback.TPDTokenSuccessCallback;
 import tech.cherri.tpdirect.callback.TPDTokenFailureCallback;
 import tech.cherri.tpdirect.exception.TPDLinePayException;
@@ -187,7 +189,26 @@ public class TapPayModule extends ReactContextBaseJavaModule {
                 promise.reject("Fail", e.getMessage());
             }
         } else {
-            promise.reject("Fail", "Line Pay is not exist.");
+            promise.reject("Fail", "LINE pay is not exist.");
         }
+    }
+
+    @ReactMethod
+    public void handleLinePayURL(String url, final Promise promise) throws TPDLinePayException {
+        tpdLinePay.parseToLinePayResult(this.reactContext, this.reactContext.getCurrentActivity().getIntent().getData(), new TPDLinePayResultListener() {
+            @Override
+            public void onParseSuccess(TPDLinePayResult tpdLinePayResult) {
+                if (tpdLinePayResult != null && tpdLinePayResult.getStatus() == 0) {
+                    promise.resolve(true);
+                } else {
+                    promise.reject("Fail", "LINE pay transaction is fail.");
+                }
+            }
+
+            @Override
+            public void onParseFail(int status, String message) {
+                promise.reject("Fail", message);
+            }
+        });
     }
 }
