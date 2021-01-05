@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27D54EF025A417100029D2E7 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D54EEF25A4170F0029D2E7 /* TPDirect.framework */; };
 		856EEB0E23E5E2EC004A7E23 /* TapPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0D23E5E2EC004A7E23 /* TapPay.swift */; };
 		856EEB1023E5E2F8004A7E23 /* TapPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0F23E5E2F8004A7E23 /* TapPay.m */; };
-		8586800323E4331C004CDED7 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85867FF223E4331C004CDED7 /* TPDirect.framework */; };
 		85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F1F5F423E2E21F005546B0 /* libReact.a */; };
 /* End PBXBuildFile section */
 
@@ -142,9 +142,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libDirectPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDirectPay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D54EEF25A4170F0029D2E7 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		856EEB0D23E5E2EC004A7E23 /* TapPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPay.swift; sourceTree = "<group>"; };
 		856EEB0F23E5E2F8004A7E23 /* TapPay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TapPay.m; sourceTree = "<group>"; };
-		85867FF223E4331C004CDED7 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		8586803D23E4446E004CDED7 /* card_jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_jcb.png; sourceTree = "<group>"; };
 		8586803E23E4446E004CDED7 /* card_amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_amex@2x.png"; sourceTree = "<group>"; };
 		8586803F23E4446E004CDED7 /* card_visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_visa.png; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8586800323E4331C004CDED7 /* TPDirect.framework in Frameworks */,
 				85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */,
+				27D54EF025A417100029D2E7 /* TPDirect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +232,7 @@
 		85F1F5DF23E2E21F005546B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				85867FF223E4331C004CDED7 /* TPDirect.framework */,
+				27D54EEF25A4170F0029D2E7 /* TPDirect.framework */,
 				85F1F5E023E2E21F005546B0 /* React.xcodeproj */,
 			);
 			name = Frameworks;
