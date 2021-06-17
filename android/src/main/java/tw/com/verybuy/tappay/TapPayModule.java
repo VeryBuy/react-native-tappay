@@ -3,7 +3,6 @@ package tw.com.verybuy.tappay;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
@@ -11,19 +10,21 @@ import com.facebook.react.uimanager.IllegalViewOperationException;
 
 
 import java.util.HashMap;
-import java.util.Map;
 
 import tech.cherri.tpdirect.api.TPDCard;
-import tech.cherri.tpdirect.api.TPDCardInfo;
+
+import tech.cherri.tpdirect.callback.dto.TPDCardInfoDto;
+import tech.cherri.tpdirect.callback.TPDCardGetPrimeSuccessCallback;
+import tech.cherri.tpdirect.callback.TPDGetPrimeFailureCallback;
+import tech.cherri.tpdirect.callback.dto.TPDMerchantReferenceInfoDto;
+import tech.cherri.tpdirect.callback.TPDLinePayGetPrimeSuccessCallback;
+
 import tech.cherri.tpdirect.api.TPDCardValidationResult;
 import tech.cherri.tpdirect.api.TPDLinePayResult;
 import tech.cherri.tpdirect.api.TPDSetup;
 import tech.cherri.tpdirect.api.TPDLinePay;
 import tech.cherri.tpdirect.api.TPDServerType;
-import tech.cherri.tpdirect.callback.TPDCardTokenSuccessCallback;
 import tech.cherri.tpdirect.callback.TPDLinePayResultListener;
-import tech.cherri.tpdirect.callback.TPDTokenSuccessCallback;
-import tech.cherri.tpdirect.callback.TPDTokenFailureCallback;
 import tech.cherri.tpdirect.exception.TPDLinePayException;
 
 
@@ -120,7 +121,6 @@ public class TapPayModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getDirectPayPrime(final Promise promise) {
-
         if (null != this.tpdCard) {
             try {
                 this.tpdCard = new TPDCard(this.reactContext,
@@ -128,11 +128,13 @@ public class TapPayModule extends ReactContextBaseJavaModule {
                         new StringBuffer(this.dueMonth),
                         new StringBuffer(this.dueYear),
                         new StringBuffer(this.CCV));
-                this.tpdCard.onSuccessCallback(new TPDCardTokenSuccessCallback() {
+
+                this.tpdCard.onSuccessCallback(new TPDCardGetPrimeSuccessCallback() {
                     @Override
-                    public void onSuccess(String token, TPDCardInfo tpdCardInfo, String cardIdentifier) {
+                    public void onSuccess(String token, TPDCardInfoDto tpdCardInfo, String cardIdentifier, TPDMerchantReferenceInfoDto merchantReferenceInfo) {
                         String cardLastFour = tpdCardInfo.getLastFour();
                         WritableMap map = Arguments.createMap();
+
                         map.putString("prime", token);
                         map.putString("bincode", tpdCardInfo.getBincode());
                         map.putString("lastfour", tpdCardInfo.getLastFour());
@@ -140,9 +142,10 @@ public class TapPayModule extends ReactContextBaseJavaModule {
                         map.putInt("type", tpdCardInfo.getCardType());
                         map.putInt("funding", tpdCardInfo.getFunding());
                         map.putString("cardidentifier", cardIdentifier);
+                        map.putString("merchantReferenceInfo", String.valueOf(merchantReferenceInfo));
                         promise.resolve(map);
                     }
-                }).onFailureCallback(new TPDTokenFailureCallback() {
+                }).onFailureCallback(new TPDGetPrimeFailureCallback() {
                     @Override
                     public void onFailure(int status, String reportMsg) {
                         //Failure
@@ -165,23 +168,21 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getLinePayPrime(String returnUrl, final Promise promise) throws TPDLinePayException {
         boolean isLinePayAvailable = TPDLinePay.isLinePayAvailable(this.reactContext);
-
         if (isLinePayAvailable) {
             try {
                 tpdLinePay = new TPDLinePay(this.reactContext, returnUrl);
 
-                tpdLinePay.getPrime(new TPDTokenSuccessCallback() {
+                tpdLinePay.getPrime(new TPDLinePayGetPrimeSuccessCallback() {
                     @Override
-                    public void onSuccess(String prime, TPDCardInfo tpdCardInfo) {
+                    public void onSuccess(String prime) {
                         WritableMap map = Arguments.createMap();
                         map.putString("prime", prime);
 
                         promise.resolve(map);
                     }
-                }, new TPDTokenFailureCallback() {
+                }, new TPDGetPrimeFailureCallback () {
                     @Override
                     public void onFailure(int status, String reportMsg) {
-                        //Failure
                         promise.reject(String.valueOf(status), reportMsg);
                     }
                 });
