@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27D54EF025A417100029D2E7 /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D54EEF25A4170F0029D2E7 /* TPDirect.framework */; };
+		0B6A0C122678366B000AF44C /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D54EEF25A4170F0029D2E7 /* TPDirect.framework */; };
 		856EEB0E23E5E2EC004A7E23 /* TapPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0D23E5E2EC004A7E23 /* TapPay.swift */; };
 		856EEB1023E5E2F8004A7E23 /* TapPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 856EEB0F23E5E2F8004A7E23 /* TapPay.m */; };
 		85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F1F5F423E2E21F005546B0 /* libReact.a */; };
@@ -141,6 +141,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B9862052678360D0024E023 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TPDirect.framework; path = ../../../../../Users/kongdehao/Downloads/iOS_v2.9.1/TPDirect.framework; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libDirectPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDirectPay.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D54EEF25A4170F0029D2E7 /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = "<group>"; };
 		856EEB0D23E5E2EC004A7E23 /* TapPay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapPay.swift; sourceTree = "<group>"; };
@@ -170,8 +171,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B6A0C122678366B000AF44C /* TPDirect.framework in Frameworks */,
 				85F1F61323E2E22A005546B0 /* libReact.a in Frameworks */,
-				27D54EF025A417100029D2E7 /* TPDirect.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				27D54EEF25A4170F0029D2E7 /* TPDirect.framework */,
+				0B9862052678360D0024E023 /* TPDirect.framework */,
 				85F1F5E023E2E21F005546B0 /* React.xcodeproj */,
 			);
 			name = Frameworks;
