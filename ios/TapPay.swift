@@ -27,9 +27,6 @@ class TapPay: NSObject {
     func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
         let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
         TPDSetup.setWithAppId(appId.int32Value, withAppKey: appKey as String, with: serverType)
-        let IDFA = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        TPDSetup.shareInstance().setupIDFA(IDFA)
-        TPDSetup.shareInstance().serverSync()
     }
     
     @objc
@@ -66,7 +63,7 @@ class TapPay: NSObject {
     ) {
         let tpdCard = TPDCard.setWithCardNumber(cardNumber, withDueMonth: dueMonth, withDueYear: dueYear, withCCV: ccv)
         
-        tpdCard.onSuccessCallback { (prime, cardInfo, cardIdentifier) in
+        tpdCard.onSuccessCallback { (prime, cardInfo, cardIdentifier, merchantReferenceInfo) in
             if
                 let directPayPrime = prime, directPayPrime != "",
                 let creditCardInfo = cardInfo,
@@ -79,7 +76,8 @@ class TapPay: NSObject {
                     "issuer": creditCardInfo.issuer ?? "",
                     "type": creditCardInfo.cardType,
                     "funding": creditCardInfo.funding,
-                    "cardidentifier": creditCardIdentifier
+                    "cardidentifier": creditCardIdentifier,
+                    "merchantReferenceInfo": merchantReferenceInfo
                 ])
             }
         }.onFailureCallback { (status, message) in
@@ -144,7 +142,7 @@ class TapPay: NSObject {
     ) {
         
         if let tpdCard = self.tpdCard {
-            tpdCard.onSuccessCallback { (prime, cardInfo, cardIdentifier) in
+            tpdCard.onSuccessCallback { (prime, cardInfo, cardIdentifier, merchantReferenceInfo) in
                 if
                     let directPayPrime = prime, directPayPrime != "",
                     let creditCardInfo = cardInfo,
@@ -157,7 +155,8 @@ class TapPay: NSObject {
                         "issuer": creditCardInfo.issuer ?? "",
                         "type": creditCardInfo.cardType,
                         "funding": creditCardInfo.funding,
-                        "cardidentifier": creditCardIdentifier
+                        "cardidentifier": creditCardIdentifier,
+                        "merchantReferenceInfo": merchantReferenceInfo
                     ])
                 }
             }.onFailureCallback { (status, message) in
