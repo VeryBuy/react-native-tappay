@@ -69,7 +69,7 @@ public class TapPayModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setup(int appID, String appKey, String rbaId, String rbaKey, String serverTypeString) {
+    public void setupWithRBA(int appID, String appKey, String rbaId, String rbaKey, String serverTypeString) {
         TPDServerType serverType = serverTypeString.equals("production") ? TPDServerType.Production : TPDServerType.Sandbox;
 
         TPDSetup.initInstanceWithRba(this.reactContext,
