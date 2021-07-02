@@ -13,6 +13,12 @@ RCT_EXTERN_METHOD(setup: (nonnull NSNumber*)appId
                   appKey: (NSString*)appkey
                   serverType: (NSString*)serverType)
 
+RCT_EXTERN_METHOD(setupWithRBA: (nonnull NSNumber*)appId
+                  appKey: (NSString*)appkey
+                  rbaId: (NSString*)rbaId
+                  rbaKey: (NSString*)rbaKey
+                  serverType: (NSString*)serverType)
+
 RCT_EXTERN_METHOD(validateCard: (NSString*)cardNumber
                   withDueMonth: (NSString*)dueMonth
                   withDueYear: (NSString*)dueYear

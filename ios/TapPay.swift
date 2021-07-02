@@ -28,6 +28,13 @@ class TapPay: NSObject {
         let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
         TPDSetup.setWithAppId(appId.int32Value, withAppKey: appKey as String, with: serverType)
     }
+
+    @objc
+    func setupWithRBA(_ appId: NSNumber, appKey: NSString, rbaId: NSString, rbaKey: NSString, serverType: NSString) {
+        let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
+
+        TPDSetup.setWithAppId(appId.int32Value, withAppKey: appKey as String, withRBAAppId: rbaId as String, withRBAAppKey: rbaKey as String, with: serverType)
+    }
     
     @objc
     func validateCard(
