@@ -1,5 +1,12 @@
 export interface TapPayInstance {
   setup: (appId: number, appKey: string, env: string) => void;
+  setupWithRBA: (
+    appId: number,
+    appKey: string,
+    rbaId: string,
+    rbaKey: string,
+    env: string
+  ) => void;
   validateCard: (
     cardNumber: string,
     dueMonth: string,
