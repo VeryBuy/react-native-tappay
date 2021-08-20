@@ -1,6 +1,6 @@
 {
-  "name": "react-native-tap-pay",
-  "title": "React Native Tap Pay",
+  "name": "react-native-tappay",
+  "title": "React Native TapPay",
   "version": "1.0.0",
   "description": "TODO",
   "main": "index.js",
@@ -10,15 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-direct-pay.git",
-    "baseUrl": "https://github.com/github_account/react-native-direct-pay"
+    "url": "git+https://github.com/verybuy/react-native-tappay.git",
+    "baseUrl": "https://github.com/verybuy/react-native-tappay"
   },
   "keywords": [
+    "tappay",
     "react-native"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "verybuy",
+    "email": "fedev@verybuy.tw"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
