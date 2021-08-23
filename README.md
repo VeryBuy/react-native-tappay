@@ -1,4 +1,4 @@
-# react-native-tap-pay
+# react-native-tappay
 
 ## Getting started
 
