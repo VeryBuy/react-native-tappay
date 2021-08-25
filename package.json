@@ -1,12 +1,12 @@
 {
   "name": "react-native-tappay",
   "title": "React Native TapPay",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "TODO",
   "main": "index.js",
   "typings": "./index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "tar -xf ios/TPDirect.framework.zip -C ios"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,14 @@
   "keywords": [
     "tappay",
     "react-native"
+  ],
+  "files": [
+    "README.md",
+    "android/",
+    "ios/",
+    "index.js",
+    "index.d.ts",
+    "react-native-tappay.podspec"
   ],
   "author": {
     "name": "verybuy",
