@@ -1,4 +1,4 @@
-# react-native-tappay
+# react-native-tappay [![npm version](https://badge.fury.io/js/react-native-tappay.svg)](https://badge.fury.io/js/react-native-tappay) [![npm](https://img.shields.io/npm/dt/react-native-tappay.svg?style=flat-square)](https://www.npmjs.com/package/install-prompt-banner)
 
 ## Getting started
 
@@ -8,7 +8,11 @@ or
 
 `$ yarn add react-native-tappay`
 
-### Mostly automatic installation in react-native < 0.60
+### React Native 0.60 and higher
+
+On newer versions of React Native, linking is automatic.
+
+### React Native 0.59 and lower
 
 `$ react-native link react-native-tappay`
 
