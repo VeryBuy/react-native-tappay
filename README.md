@@ -1,5 +1,13 @@
 # react-native-tappay [![npm version](https://badge.fury.io/js/react-native-tappay.svg)](https://badge.fury.io/js/react-native-tappay) [![npm](https://img.shields.io/npm/dt/react-native-tappay.svg?style=flat-square)](https://www.npmjs.com/package/install-prompt-banner)
 
+[Tappay](https://www.tappaysdk.com/en) is a great payment service provider and provider many payment method.
+
+[react-native-tappay](https://github.com/VeryBuy/react-native-tappay) is a wrapper around the [iOS Tappay SDK](https://github.com/TapPay/tappay-ios-example) and [Android Tappay SDK](https://github.com/TapPay/tappay-android-example), allowing for Tappay integration in React Native apps. Provided JS Code to call native functions.
+
+This package aims to support functional usage [without Form](https://portal.tappaysdk.com/document/androidnoform). So you can custom your component/behavior or intergrate with other library as you want.
+
+We use it in our product and we love to open source it ❤. 
+
 ## Getting started
 
 `$ npm install react-native-tappay --save`
@@ -53,3 +61,10 @@ TapPay.getDirectPayPrime()
   });
 TapPay.removeCard();
 ```
+
+# Suppported Payment
+ - [x] [Direct Pay](https://www.tappaysdk.com/en/payments/direct-pay)
+ - [x] [Line Pay](https://www.tappaysdk.com/en/payments/line-pay)
+ - [ ] [Apple Pay](https://www.tappaysdk.com/en/payments/apple-pay) TODO
+ - [ ] [Google Pay](https://www.tappaysdk.com/en/payments/google-pay) PR Welcome
+ - [ ] [Samsung Pay](https://www.tappaysdk.com/en/payments/samsung-pay) PR Welcome
