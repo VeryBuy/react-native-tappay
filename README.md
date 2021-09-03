@@ -8,6 +8,11 @@ This package aims to support functional usage [without Form](https://portal.tapp
 
 We use it in our product and we love to open source it ❤. 
 
+# Tappay SDK support Version
+* Web: [5.6.0]<https://github.com/TapPay/tappay-web-example/releases/tag/v5.6.0>
+* Android: [3.3.0]https://github.com/TapPay/tappay-android-example/releases/tag/3.3.2>
+* iOS: [2.11.1]<https://github.com/TapPay/tappay-ios-example/releases/tag/v2.11.0>
+
 ## Getting started
 
 `$ npm install react-native-tappay --save`
