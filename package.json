@@ -18,12 +18,15 @@
     "react-native"
   ],
   "files": [
-    "README.md",
     "android/",
     "ios/",
-    "index.js",
+    "src/",
     "index.d.ts",
-    "react-native-tappay.podspec"
+    "index.js",
+    "react-native-tappay.podspec",
+    "TapPay.ts",
+    "TapPay.web.ts",
+    "README.md"
   ],
   "author": {
     "name": "verybuy",
