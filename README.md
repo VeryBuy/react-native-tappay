@@ -30,21 +30,45 @@ On newer versions of React Native, linking is automatic.
 `$ react-native link react-native-tappay`
 
 ## Usage
+
+### Currently supports RBA setup
+
+#### without RBA
+
 ```javascript
-TapPay.setup(appID, appKey, 'sandbox');
+import { useTapPay } from 'react-native-tappay';
+
+function MyComponent() {
+  const [isLoadedSuccess, TapPay] = useTapPay({ appId, appKey, env })
+
+  return ...
+}
+```
+#### with RBA
+
+```javascript
+import { useTapPay } from 'react-native-tappay';
+
+function MyComponent() {
+  const [isLoadedSuccess, TapPay] = useTapPay({ appId, appKey, env, rbaId, rbaKey })
+
+  return ...
+}
+```
+
+### Example
+```javascript
 TapPay.validateCard('4242424242424242', '01', '23', '123')
   .then(result => {
     console.log({
       "isCardNumberValid": result.isCardNumberValid,
       "isExpiredDateValid": result.isExpiredDateValid,
       "isCCVValid": result.isCCVValid,
-      "cardType": result.cardType 
+      "cardType": result.cardType,
     });
-    showToast(JSON.stringify(result));
   })
-  .catch(err => {
-    console.error(err);
-    showToast('validate error');
+  .catch(error => {
+    console.error(error);
   });
 TapPay.setCard('4242424242424242', '01', '23', '123');
 TapPay.getDirectPayPrime()
@@ -56,16 +80,70 @@ TapPay.getDirectPayPrime()
       "issuer": result.issuer,
       "type": result.type,
       "funding": result.funding,
-      "cardidentifier":result.cardidentifier 
+      "cardidentifier":result.cardidentifier,
     });
-    showToast(JSON.stringify(result));
   })
-  .catch(e => {
-    console.error(e);
-    showToast('getPrime error');
+  .catch(error => {
+    console.error(error);
   });
 TapPay.removeCard();
 ```
+
+## Props
+
+Name   | Type     | Required
+-------|----------|--------
+appId  | `number` | YES
+appKey | `string` | YES
+env    | `string` | YES
+rbaId  | `string` | NO
+rbaKey | `string` | NO
+
+## Methods
+
+### validateCard
+Parameters: `cardNumber: string, dueMonth: string, dueYear: string, CCV: string`<br>
+Returns: `void`
+
+### setCard
+Parameters: `cardNumber: string, dueMonth: string, dueYear: string, CCV: string`<br>
+Returns: `void`
+
+### getDirectPayPrime
+Parameters: `none`<br>
+Returns: `Promise<GetCardPrimeResolveValue>`
+
+[GetCardPrimeResolveValue](#getcardprimeresolvevalue)
+
+### removeCard
+Parameters: `none`<br>
+Returns: `Promise<GetCardPrimeResolveValue>`
+
+### getLinePayPrime
+Parameters: `url: string`<br>
+Returns: `Promise<{ prime: string | null }>`
+
+### isLinePayAvailable
+Parameters: `void`<br>
+Returns: `Promise<boolean>`
+
+### handleLinePayURL
+Parameters: `url: string`<br>
+Returns: `Promise<boolean>`
+
+#### Types
+
+##### GetCardPrimeResolveValue
+Name                  | Type                          | Content
+----------------------|-------------------------------|-----------------------------------------------------------------------------------
+prime                 | `string`                      |
+bincode               | `string`                      |
+lastfour              | `string`                      |
+issuer                | `string`                      |
+funding               | `number`                      | -1 = Unknown<br>0 = Credit Card<br>1 = Debit Card<br>2 = Prepaid Card
+type                  | `number`                      | -1 = Unknown<br>1 = VISA<br>2 = MasterCard<br>3 = JCB<br>4 = Union Pay<br>5 = AMEX
+cardidentifier        | `string`                      |
+merchantReferenceInfo | `{ affiliate_codes: Array }`  |
 
 # Suppported Payment
  - [x] [Direct Pay](https://www.tappaysdk.com/en/payments/direct-pay)
