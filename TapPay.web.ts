@@ -1,1 +1,1 @@
-export { default } from "./web";
+export * from "./src/web";

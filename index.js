@@ -1,1 +1,1 @@
-export { default } from "./TapPay";
+export * from "./TapPay";

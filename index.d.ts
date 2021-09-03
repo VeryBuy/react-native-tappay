@@ -1,7 +1,5 @@
-import TapPayInstance from "./types/TapPayInstance";
+import { UseTapPay, SetupArgs } from "./src/types/TapPayInstance";
 
-declare const TapPay: TapPayInstance;
+export function useTapPay(setupArgs: SetupArgs): UseTapPay;
 
-export type { TapPayInstance };
-
-export default TapPay;
+export type { default as TapPayInstance } from "./src/types/TapPayInstance";
