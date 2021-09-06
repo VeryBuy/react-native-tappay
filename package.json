@@ -1,7 +1,7 @@
 {
   "name": "react-native-tappay",
   "title": "React Native TapPay",
-  "version": "1.0.4",
+  "version": "1.1.1",
   "description": "TODO",
   "main": "index.js",
   "typings": "./index.d.ts",
@@ -18,12 +18,15 @@
     "react-native"
   ],
   "files": [
-    "README.md",
     "android/",
     "ios/",
-    "index.js",
+    "src/",
     "index.d.ts",
-    "react-native-tappay.podspec"
+    "index.js",
+    "react-native-tappay.podspec",
+    "TapPay.ts",
+    "TapPay.web.ts",
+    "README.md"
   ],
   "author": {
     "name": "verybuy",
@@ -33,7 +36,7 @@
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "react": "^16.8.1",
+    "react": ">=16.8.3",
     "react-native": ">=0.59.0-rc.0 <1.0.x"
   },
   "devDependencies": {
