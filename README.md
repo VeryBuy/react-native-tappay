@@ -77,6 +77,15 @@ TapPay.validateCard('4242424242424242', '01', '23', '123')
     console.error(error);
   });
 TapPay.setCard('4242424242424242', '01', '23', '123');
+TapPay.onCardUpdate(update => {
+  const { cardType, canGetPrime, status } = update;
+
+  setCardType(cardType);
+  setValidated(canGetPrime);
+  setHasNumberError(status.number === 2);
+  setHasExpiryError(status.expiry === 2);
+  setHasCCVError(status.ccv === 2);
+});
 TapPay.getDirectPayPrime()
   .then(result => {
     console.log({
@@ -115,6 +124,12 @@ Returns: `void`
 Parameters: `cardNumber: string, dueMonth: string, dueYear: string, CCV: string`<br>
 Returns: `void`
 
+### onCardUpdate
+Parameters: `callback: (result: UpdateResult) => void`<br>
+Returns: `void`
+
+[UpdateResult](#updateresult)
+
 ### getDirectPayPrime
 Parameters: `none`<br>
 Returns: `Promise<GetCardPrimeResolveValue>`
@@ -138,6 +153,16 @@ Parameters: `url: string`<br>
 Returns: `Promise<boolean>`
 
 #### Types
+
+### UpdateResult
+Name | Type | Content
+-----|------|---------
+cardType | string | mastercard, visa, jcb, amex, unionpay, unknown
+canGetPrime | boolean |
+hasError | boolean |
+status.number | number | 0 = The field has been filled in and there is no problem<br>1 = The field has not been filled in yet<br>2 = Field error<br> 3 = Typing
+status.expiry | number | 0 = The field has been filled in and there is no problem<br>1 = The field has not been filled in yet<br>2 = Field error<br> 3 = Typing
+status.ccv | number | 0 = The field has been filled in and there is no problem<br>1 = The field has not been filled in yet<br>2 = Field error<br> 3 = Typing
 
 ##### GetCardPrimeResolveValue
 Name                  | Type                          | Content
