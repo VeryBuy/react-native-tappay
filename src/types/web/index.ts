@@ -1,4 +1,4 @@
-import { GetCardPrime } from "./card";
+import { GetCardPrime, UpdateCallback } from "./card";
 import { GetLinePayPrime } from "./linePay";
 
 export interface TapPayDirect {
@@ -9,7 +9,7 @@ export interface TapPayDirect {
   };
   card: {
     setup: Function;
-    onUpdate: Function;
+    onUpdate: (callback: UpdateCallback) => void;
     getPrime: (callback: (result: GetCardPrime) => void) => void;
   };
 }

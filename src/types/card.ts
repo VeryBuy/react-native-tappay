@@ -36,3 +36,5 @@ export interface GetCardPrimeResolveValue extends CardBasicInfo {
     affiliate_codes: unknown[];
   };
 }
+
+export type { UpdateCallback } from "./web/card";

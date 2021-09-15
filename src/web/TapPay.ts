@@ -1,6 +1,7 @@
-import { Status } from "../types/common";
+import { GetPrimeStatus } from "../types/common";
 import { GetCardPrimeResolveValue } from "../types/card";
 import { TapPayDirect } from "../types/web";
+import { UpdateCallback } from "../types/web/card";
 
 declare global {
   interface Window {
@@ -35,6 +36,10 @@ export class TapPayMethods {
     return;
   };
 
+  onCardUpdate = (cb: UpdateCallback) => {
+    window.TPDirect.card.onUpdate(cb);
+  };
+
   getDirectPayPrime = () => {
     if (!this.isLoadedSuccess) {
       return Promise.reject("TapPay is not loaded or failed");
@@ -43,7 +48,7 @@ export class TapPayMethods {
     return new Promise<GetCardPrimeResolveValue>((resolve, reject) => {
       try {
         window.TPDirect.card.getPrime((result) => {
-          if (result.status !== Status.Success) {
+          if (result.status !== GetPrimeStatus.Success) {
             return reject(result.msg);
           }
 
