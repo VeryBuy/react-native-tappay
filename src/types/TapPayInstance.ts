@@ -1,4 +1,4 @@
-import { GetCardPrimeResolveValue } from "./card";
+import { GetCardPrimeResolveValue, UpdateCallback } from "./card";
 
 export interface SetupArgs {
   appId: number;
@@ -25,6 +25,7 @@ export default interface TapPayInstance {
     dueYear: string,
     CCV: string
   ) => void;
+  onCardUpdate: (cb: UpdateCallback) => void;
   getDirectPayPrime: () => Promise<GetCardPrimeResolveValue>;
   removeCard: () => void;
   getLinePayPrime: (returnUrl: string) => Promise<{ prime: string | null }>;

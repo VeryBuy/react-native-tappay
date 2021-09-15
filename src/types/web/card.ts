@@ -29,3 +29,29 @@ export interface GetCardPrime extends GetPrime {
    */
   merchant_reference_info: MerchantReferenceInfo;
 }
+
+export enum UpdateCardStatus {
+  /** 欄位已填好，並且沒有問題 */
+  Correct,
+  /** 欄位還沒有填寫 */
+  NotFilledIn,
+  /** 欄位有錯誤，此時在 CardView 裡面會用顯示 errorColor */
+  Wrong,
+  /** 使用者正在輸入中 */
+  Typing,
+}
+
+export interface UpdateResult {
+  cardType: "mastercard" | "visa" | "jcb" | "amex" | "unionpay" | "unknown";
+  /** true = 全部欄位皆為正確，可以呼叫 getPrime */
+  canGetPrime: boolean;
+  /**	true = 任何欄位有錯誤 */
+  hasError: boolean;
+  status: {
+    number: UpdateCardStatus;
+    expiry: UpdateCardStatus;
+    ccv: UpdateCardStatus;
+  };
+}
+
+export type UpdateCallback = (result: UpdateResult) => void;
