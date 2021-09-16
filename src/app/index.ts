@@ -11,6 +11,7 @@ export function useTapPay(args: SetupArgs): UseTapPay {
 
   // This method is worked on Web
   TapPay.onCardUpdate = (_cb) => {};
+  TapPay.cardSetup = (_args) => {};
 
   useEffect(() => {
     if (rbaId && rbaKey) {
