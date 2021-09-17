@@ -1,6 +1,20 @@
 import { GetPrime } from "../common";
 import { CardBasicInfo } from "../card";
 
+interface Field {
+  element: HTMLElement | string;
+  placeholder: string;
+}
+
+export interface CardSetupArgs {
+  fields: {
+    number: Field;
+    expirationDate: Field;
+    ccv?: Field;
+  };
+  styles: any;
+}
+
 export interface Card extends CardBasicInfo {
   /** 發卡銀行中文名稱 */
   issuer_zh_tw: string;

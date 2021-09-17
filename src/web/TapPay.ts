@@ -1,7 +1,7 @@
 import { GetPrimeStatus } from "../types/common";
 import { GetCardPrimeResolveValue } from "../types/card";
 import { TapPayDirect } from "../types/web";
-import { UpdateCallback } from "../types/web/card";
+import { CardSetupArgs, UpdateCallback } from "../types/web/card";
 
 declare global {
   interface Window {
@@ -15,6 +15,10 @@ export class TapPayMethods {
   }
 
   private isLoadedSuccess: boolean;
+
+  cardSetup = (args: CardSetupArgs) => {
+    window.TPDirect.card.setup(args);
+  };
 
   // This method is worked on android or iOS.
   validateCard = (

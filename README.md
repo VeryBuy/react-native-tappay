@@ -64,6 +64,47 @@ function MyComponent() {
 
 ### Example
 ```javascript
+TapPay.cardSetup({
+  fields: {
+    number: {
+      // css selector
+      element: '#card-number',
+      placeholder: '**** **** **** ****'
+    },
+    expirationDate: {
+      // DOM object
+      element: document.getElementById('card-expiration-date'),
+      placeholder: 'MM / YY'
+    },
+    ccv: {
+      element: '#card-ccv',
+      placeholder: 'ccv'
+    },
+  },
+  styles: {
+    input: {
+      color: 'gray',
+    },
+    'input.ccv': {
+      'font-size': '16px',
+    },
+    'input.expiration-date': {
+      'font-size': '16px',
+    },
+    'input.card-number': {
+      'font-size': '16px',
+    },
+    ':focus': {
+      color: warrior,
+    },
+    '.valid': {
+      color: warrior,
+    },
+    '.invalid': {
+      color: warrior,
+    },
+  },
+});
 TapPay.validateCard('4242424242424242', '01', '23', '123')
   .then(result => {
     console.log({
@@ -116,6 +157,12 @@ rbaKey | `string` | NO
 
 ## Methods
 
+### cardSetup [Web Only]
+Parameters: `args: CardSetupArgs`<br>
+Returns: `void`
+
+[CardSetupArgs](#cardsetupargs)
+
 ### validateCard
 Parameters: `cardNumber: string, dueMonth: string, dueYear: string, CCV: string`<br>
 Returns: `void`
@@ -124,7 +171,7 @@ Returns: `void`
 Parameters: `cardNumber: string, dueMonth: string, dueYear: string, CCV: string`<br>
 Returns: `void`
 
-### onCardUpdate
+### onCardUpdate [Web Only]
 Parameters: `callback: (result: UpdateResult) => void`<br>
 Returns: `void`
 
@@ -153,6 +200,15 @@ Parameters: `url: string`<br>
 Returns: `Promise<boolean>`
 
 #### Types
+
+
+### CardSetupArgs
+Name | Type | Content
+-----|------|---------
+fields.number | { element: HTMLElement or string, placeholder: string } |
+fields.expirationDate | { element: HTMLElement or string, placeholder: string } |
+fields.ccv | { element: HTMLElement or string, placeholder: string } | `ccv` is optional, if there is input, it will be validated, if there is no input, it will not.<br>If you don't want to display the `ccv` field, don't need to set.
+styles | Object | Supported CSS - [TapPay Fields Styles](https://docs.tappaysdk.com/tutorial/zh/reference.html#tappay-fields-styles)
 
 ### UpdateResult
 Name | Type | Content

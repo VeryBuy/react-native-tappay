@@ -1,4 +1,8 @@
-import { GetCardPrimeResolveValue, UpdateCallback } from "./card";
+import {
+  CardSetupArgs,
+  GetCardPrimeResolveValue,
+  UpdateCallback,
+} from "./card";
 
 export interface SetupArgs {
   appId: number;
@@ -13,6 +17,7 @@ type IsLoadedSuccess = boolean;
 export type UseTapPay = [IsLoadedSuccess, TapPayInstance];
 
 export default interface TapPayInstance {
+  cardSetup: (args: CardSetupArgs) => void;
   validateCard: (
     cardNumber: string,
     dueMonth: string,
