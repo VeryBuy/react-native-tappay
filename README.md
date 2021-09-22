@@ -1,4 +1,4 @@
-# react-native-tappay [![npm version](https://badge.fury.io/js/react-native-tappay.svg)](https://badge.fury.io/js/react-native-tappay) [![npm](https://img.shields.io/npm/dt/react-native-tappay.svg?style=flat-square)](https://www.npmjs.com/package/react-native-tappay)
+# react-native-tappay [![react-native-tappay is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](ttps://github.com/VeryBuy/react-native-tappay/blob/HEAD/LICENSE) [![npm version](https://badge.fury.io/js/react-native-tappay.svg)](https://badge.fury.io/js/react-native-tappay) [![npm](https://img.shields.io/npm/dt/react-native-tappay.svg?style=flat-square)](https://www.npmjs.com/package/react-native-tappay)
 
 [Tappay](https://www.tappaysdk.com/en) is a great payment service provider which provide many popular payment method.
 
@@ -238,3 +238,8 @@ merchantReferenceInfo | `{ affiliate_codes: Array }`  |
  - [ ] [Apple Pay](https://www.tappaysdk.com/en/payments/apple-pay) TODO
  - [ ] [Google Pay](https://www.tappaysdk.com/en/payments/google-pay) PR Welcome
  - [ ] [Samsung Pay](https://www.tappaysdk.com/en/payments/samsung-pay) PR Welcome
+
+
+# 📄 License
+
+React Native is MIT licensed, as found in the [LICENSE](https://github.com/VeryBuy/react-native-tappay/blob/HEAD/LICENSE) file.
