@@ -18,6 +18,8 @@ export default function useScript(
 
   useEffect(
     () => {
+      let cleanup: (() => void) | null = null;
+
       // If cachedScripts array already includes src that means another instance ...
       // ... of this hook already loaded this script, so no need to load again.
       if (cachedScripts.includes(src)) {
@@ -91,11 +93,17 @@ export default function useScript(
         document.body.appendChild(script);
 
         // Remove event listeners on cleanup
-        return () => {
+        cleanup = () => {
           script.removeEventListener("load", handleLoad);
           script.removeEventListener("error", onScriptError);
         };
       }
+
+      return () => {
+        if (cleanup) {
+          cleanup();
+        }
+      };
     },
     [] // Only re-run effect if script src changes
   );

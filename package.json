@@ -3,9 +3,11 @@
   "title": "React Native TapPay",
   "version": "1.1.1",
   "description": "TODO",
-  "main": "index.js",
-  "typings": "./index.d.ts",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
     "postinstall": "tar -xf ios/TPDirect.framework.zip -C ios"
   },
   "repository": {
@@ -20,12 +22,8 @@
   "files": [
     "android/",
     "ios/",
-    "src/",
-    "index.d.ts",
-    "index.js",
+    "dist/",
     "react-native-tappay.podspec",
-    "TapPay.ts",
-    "TapPay.web.ts",
     "README.md"
   ],
   "author": {
@@ -42,6 +40,7 @@
   "devDependencies": {
     "@types/react": "^16.8.3",
     "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "react-native": "^0.59.10",
+    "typescript": "^4.4.3"
   }
 }

@@ -1,7 +1,10 @@
 import { GetPrimeStatus } from "../types/common";
-import { GetCardPrimeResolveValue } from "../types/card";
+import {
+  GetCardPrimeResolveValue,
+  CardSetupArgs,
+  UpdateCallback,
+} from "../types/card";
 import { TapPayDirect } from "../types/web";
-import { CardSetupArgs, UpdateCallback } from "../types/web/card";
 
 declare global {
   interface Window {
