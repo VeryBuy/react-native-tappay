@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "esnext",
+    "outDir": "./dist",
+    "module": "esnext",
+    "lib": ["es2018", "dom"],
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "noEmitOnError": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "sourceMap": false,
+    "noImplicitReturns": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "types": ["react", "react-native", "jest"],
+  "exclude": [
+    "android/**/*",
+    "ios/**/*",
+    "dist/**/*"
+  ],
+  "include": ["src"]
+}
