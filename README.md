@@ -1,6 +1,8 @@
 # react-native-tappay [![react-native-tappay is released under the MIT license.](https://img.shields.io/badge/license-MIT-blue.svg)](ttps://github.com/VeryBuy/react-native-tappay/blob/HEAD/LICENSE) [![npm version](https://badge.fury.io/js/react-native-tappay.svg)](https://badge.fury.io/js/react-native-tappay) [![npm](https://img.shields.io/npm/dt/react-native-tappay.svg?style=flat-square)](https://www.npmjs.com/package/react-native-tappay)
 
-[Tappay](https://www.tappaysdk.com/en) is a great payment service provider which provide many popular payment method.
+### Write once, run everywhere
+
+[Tappay](https://www.tappaysdk.com/en) is a great payment service provider which provide many popular payment method. We want to write once and run everywhere(Web/Android/iOS).
 
 [react-native-tappay](https://github.com/VeryBuy/react-native-tappay) is a wrapper around the [iOS Tappay SDK](https://github.com/TapPay/tappay-ios-example) , [Android Tappay SDK](https://github.com/TapPay/tappay-android-example) and [Web Tappay SDK](https://github.com/TapPay/tappay-web-example), allowing for Tappay integration in React Native apps. Provided JS Code to call native functions.
 
@@ -242,4 +244,4 @@ merchantReferenceInfo | `{ affiliate_codes: Array }`  |
 
 # 📄 License
 
-React Native is MIT licensed, as found in the [LICENSE](https://github.com/VeryBuy/react-native-tappay/blob/HEAD/LICENSE) file.
+react-native-tappay is MIT licensed, as found in the [LICENSE](https://github.com/VeryBuy/react-native-tappay/blob/HEAD/LICENSE) file.
