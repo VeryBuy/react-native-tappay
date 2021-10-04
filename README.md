@@ -4,6 +4,8 @@
 
 [Tappay](https://www.tappaysdk.com/en) is a great payment service provider which provide many popular payment method. We want to write once and run everywhere(Web/Android/iOS).
 
+<img src="https://bingo.d.pr/8To8My.png" width="180">
+
 [react-native-tappay](https://github.com/VeryBuy/react-native-tappay) is a wrapper around the [iOS Tappay SDK](https://github.com/TapPay/tappay-ios-example) , [Android Tappay SDK](https://github.com/TapPay/tappay-android-example) and [Web Tappay SDK](https://github.com/TapPay/tappay-web-example), allowing for Tappay integration in React Native apps. Provided JS Code to call native functions.
 
 This package aims to support functional usage [without Form](https://portal.tappaysdk.com/document/androidnoform). So you can custom your component/behavior or intergrate with other library as you want.
