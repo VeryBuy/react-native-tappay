@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 import { TPDIframeId, TAP_PAY_SDK_PATH } from "./constant";
 import { SetupArgs, UseTapPay } from "../types/TapPayInstance";
@@ -15,6 +15,10 @@ export function useTapPay(args: SetupArgs): UseTapPay {
     tpChecker
   );
   const isLoadedSuccess = isLoaded && !hasError;
+  const tapPayInstance = useMemo(
+    () => new TapPayMethods(isLoadedSuccess),
+    [isLoadedSuccess]
+  );
 
   useEffect(() => {
     if (!isLoadedSuccess) {
@@ -34,5 +38,5 @@ export function useTapPay(args: SetupArgs): UseTapPay {
     }
   }, [isLoadedSuccess]);
 
-  return [isLoaded && !hasError, new TapPayMethods(isLoadedSuccess)];
+  return [isLoadedSuccess, tapPayInstance];
 }
