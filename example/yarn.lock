@@ -10268,10 +10268,10 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-tappay@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.2.0.tgz#bc480dbfdf0671afff5b2d9ffa4e6798498af641"
-  integrity sha512-kve96SncibxN0Dg/+QxESNTKiqfNem86YCeM0t81EQzB8o2HkQcXFW3F5ym01JZ7YCcV5SPzEljL6jZmRXbkSA==
+react-native-tappay@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.2.1.tgz#3a118ef505f63d8cf2e3d227e94cac0ec66b2401"
+  integrity sha512-uCMihTtnc5X43yWsdsnFtXnViKESRa4RYd0S7+lqIbfEUXUq2/ar8RPcYUV130No9E0pOlFIXoyG+B8Obfa3DQ==
 
 react-native-web@^0.17.5:
   version "0.17.5"
