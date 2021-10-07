@@ -1,0 +1,58 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "web": "react-app-rewired start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native": "0.66.0",
+    "react-native-tappay": "^1.2.1",
+    "react-native-web": "^0.17.5",
+    "react-scripts": "^4.0.3",
+    "safe-await": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react-native": "^0.65.0",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "8.1.0",
+    "eslint": "^7.14.0",
+    "jest": "26.6.0",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-app-rewired": "^2.1.8",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "browserslist": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
