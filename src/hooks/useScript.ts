@@ -18,20 +18,79 @@ export default function useScript(
 
   useEffect(
     () => {
-      let cleanup: (() => void) | null = null;
+      let script: HTMLScriptElement | null = null;
+      let timeout: number | null = null;
 
-      // If cachedScripts array already includes src that means another instance ...
-      // ... of this hook already loaded this script, so no need to load again.
-      if (cachedScripts.includes(src)) {
+      const clearDelay = () => {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+      };
+
+      const setDelay = (handler) => {
+        clearDelay();
+        timeout = setTimeout(handler, SCRIPT_CHECK_INTERVAL);
+      };
+
+      // Script event listener callbacks for load and error
+      const onScriptLoad = () => {
         setState({
           loaded: true,
           error: false,
         });
+      };
+
+      const onScriptError = () => {
+        // Remove from cachedScripts we can try loading again
+        const index = cachedScripts.indexOf(src);
+
+        if (index >= 0) cachedScripts.splice(index, 1);
+        if (script) {
+          script.remove();
+        }
+
+        setState({
+          loaded: true,
+          error: true,
+        });
+      };
+
+      const waitForScript = () => {
+        const start = Date.now();
+
+        function handler(resolve: Function, reject: (err: Error) => void) {
+          if (typeof checker !== "function") {
+            resolve();
+
+            return;
+          }
+
+          if (checker()) {
+            resolve();
+          } else if (Date.now() - start >= SCRIPT_CHECK_TIMEOUT) {
+            reject(new Error("timeout"));
+          } else {
+            setDelay(() => handler(resolve, reject));
+          }
+        }
+
+        return new Promise<void>(handler);
+      };
+
+      const handleLoad = () => {
+        waitForScript().then(onScriptLoad).catch(onScriptError);
+      };
+
+      // If cachedScripts array already includes src that means another instance ...
+      // ... of this hook already loaded this script, so no need to load again.
+      if (cachedScripts.includes(src)) {
+        handleLoad();
       } else {
         cachedScripts.push(src);
 
         // Create script
-        const script = document.createElement("script");
+        script = document.createElement("script");
 
         script.src = src;
         script.async = true;
@@ -39,70 +98,21 @@ export default function useScript(
           script.id = id;
         }
 
-        // Script event listener callbacks for load and error
-        const onScriptLoad = () => {
-          setState({
-            loaded: true,
-            error: false,
-          });
-        };
-
-        const onScriptError = () => {
-          // Remove from cachedScripts we can try loading again
-          const index = cachedScripts.indexOf(src);
-
-          if (index >= 0) cachedScripts.splice(index, 1);
-          script.remove();
-
-          setState({
-            loaded: true,
-            error: true,
-          });
-        };
-
-        const waitForScript = () => {
-          const start = Date.now();
-
-          function handler(resolve: Function, reject: (err: Error) => void) {
-            if (typeof checker !== "function") {
-              resolve();
-
-              return;
-            }
-
-            if (checker()) {
-              resolve();
-            } else if (Date.now() - start >= SCRIPT_CHECK_TIMEOUT) {
-              reject(new Error("timeout"));
-            } else {
-              setTimeout(() => handler(resolve, reject), SCRIPT_CHECK_INTERVAL);
-            }
-          }
-
-          return new Promise<void>(handler);
-        };
-
-        const handleLoad = () => {
-          waitForScript().then(onScriptLoad).catch(onScriptError);
-        };
-
         script.addEventListener("load", handleLoad);
         script.addEventListener("error", onScriptError);
 
         // Add script to document body
         document.body.appendChild(script);
-
-        // Remove event listeners on cleanup
-        cleanup = () => {
-          script.removeEventListener("load", handleLoad);
-          script.removeEventListener("error", onScriptError);
-        };
       }
 
       return () => {
-        if (cleanup) {
-          cleanup();
+        // Remove event listeners on cleanup
+        if (script) {
+          script.removeEventListener("load", handleLoad);
+          script.removeEventListener("error", onScriptError);
         }
+
+        clearDelay();
       };
     },
     [] // Only re-run effect if script src changes
