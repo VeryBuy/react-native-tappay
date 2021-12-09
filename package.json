@@ -1,7 +1,7 @@
 {
   "name": "react-native-tappay",
   "title": "React Native TapPay",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "TODO",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
