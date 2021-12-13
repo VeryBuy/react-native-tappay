@@ -1,3 +1,4 @@
+# [!! NOT FINISHED !!]
 # react-native-tappay example
 
 ## Usage
