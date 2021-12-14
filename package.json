@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "yarn build",
-    "postinstall": "tar -xf ios/TPDirect.framework.zip -C ios"
+    "postinstall": "tar -xf ios/TPDirect.framework.tar.gz -C ios"
   },
   "repository": {
     "type": "git",
