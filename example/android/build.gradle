@@ -31,6 +31,9 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
+        flatDir {
+            dirs "$rootDir/../node_modules/react-native-tappay/android/libs"
+        }
 
         google()
         maven { url 'https://www.jitpack.io' }
