@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import { NativeModules } from "react-native";
-import { SetupArgs, UseTapPay } from "../types/TapPayInstance";
+import { NativeModules } from 'react-native';
+import { SetupArgs, UseTapPay } from '../types/TapPayInstance';
 
 const { TapPay } = NativeModules;
 
@@ -10,8 +10,12 @@ export function useTapPay(args: SetupArgs): UseTapPay {
   const { setup, setupWithRBA, ...restTapPayMethods } = TapPay;
 
   // This method is worked on Web
-  TapPay.onCardUpdate = (_cb) => {};
-  TapPay.cardSetup = (_args) => {};
+  TapPay.onCardUpdate = _cb => {
+    //
+  };
+  TapPay.cardSetup = _args => {
+    //
+  };
 
   useEffect(() => {
     if (rbaId && rbaKey) {
@@ -19,7 +23,7 @@ export function useTapPay(args: SetupArgs): UseTapPay {
     } else {
       setup(appId, appKey, env);
     }
-  }, []);
+  }, [appId, appKey, env, rbaId, rbaKey, setup, setupWithRBA]);
 
   return [true, restTapPayMethods];
 }

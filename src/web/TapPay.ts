@@ -1,10 +1,6 @@
-import { GetPrimeStatus } from "../types/common";
-import {
-  GetCardPrimeResolveValue,
-  CardSetupArgs,
-  UpdateCallback,
-} from "../types/card";
-import { TapPayDirect } from "../types/web";
+import { GetPrimeStatus } from '../types/common';
+import { GetCardPrimeResolveValue, CardSetupArgs, UpdateCallback } from '../types/card';
+import { TapPayDirect } from '../types/web';
 
 declare global {
   interface Window {
@@ -24,22 +20,12 @@ export class TapPayMethods {
   };
 
   // This method is worked on android or iOS.
-  validateCard = (
-    _cardNumber: string,
-    _dueMonth: string,
-    _dueYear: string,
-    _CCV: string
-  ) => {
+  validateCard = (_cardNumber: string, _dueMonth: string, _dueYear: string, _CCV: string) => {
     return Promise.resolve();
   };
 
   // This method is worked on android or iOS.
-  setCard = (
-    _cardNumber: string,
-    _dueMonth: string,
-    _dueYear: string,
-    _CCV: string
-  ) => {
+  setCard = (_cardNumber: string, _dueMonth: string, _dueYear: string, _CCV: string) => {
     return;
   };
 
@@ -49,12 +35,12 @@ export class TapPayMethods {
 
   getDirectPayPrime = () => {
     if (!this.isLoadedSuccess) {
-      return Promise.reject("TapPay is not loaded or failed");
+      return Promise.reject('TapPay is not loaded or failed');
     }
 
     return new Promise<GetCardPrimeResolveValue>((resolve, reject) => {
       try {
-        window.TPDirect.card.getPrime((result) => {
+        window.TPDirect.card.getPrime(result => {
           if (result.status !== GetPrimeStatus.Success) {
             return reject(result.msg);
           }
@@ -89,17 +75,17 @@ export class TapPayMethods {
 
   getLinePayPrime = (_returnUrl: string) => {
     if (!this.isLoadedSuccess) {
-      return Promise.reject("TapPay is not loaded or failed");
+      return Promise.reject('TapPay is not loaded or failed');
     }
 
     return new Promise<{ prime: string | null }>((resolve, reject) => {
       try {
-        window.TPDirect.linePay.getPrime((result) => {
+        window.TPDirect.linePay.getPrime(result => {
           if (result.prime) {
             return resolve({ prime: result.prime });
           }
 
-          reject({ message: "prime is empty" });
+          reject({ message: 'prime is empty' });
         });
       } catch (error) {
         reject(error);
