@@ -7,7 +7,7 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "yarn build",
+    "prepare": "yarn build && husky install",
     "postinstall": "tar -xf ios/TPDirect.framework.tar.gz -C ios"
   },
   "repository": {
@@ -45,6 +45,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.0",
+    "lint-staged": ">=10",
     "prettier": "^2.5.1",
     "react": "^16.8.3",
     "react-native": "^0.60.0",
