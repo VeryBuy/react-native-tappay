@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { useTapPay } from 'react-native-tappay';
+
+import DirectPay from '../DirectPay';
+import TAPPAY_CONFIG from '../../constants/TapPayConfig';
 
 const App = () => {
+  const [isLoadedSuccess, TapPay] = useTapPay(TAPPAY_CONFIG);
+
   return (
     <View>
-      <Text>App</Text>
+      <DirectPay isLoadedSuccess={isLoadedSuccess} TapPay={TapPay} />
     </View>
   );
 };

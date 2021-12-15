@@ -1,14 +1,9 @@
 import React, { useEffect, useState, FC } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import safeAwait from 'safe-await';
-import { TapPayInstance } from 'react-native-tappay';
 
 import { cardSetupConfig, CARD_FIELD_ID } from './constants';
-
-interface Props {
-  isLoadedSuccess: boolean;
-  TapPay: TapPayInstance;
-}
+import { Props } from './types';
 
 const DirectPay: FC<Props> = props => {
   const { isLoadedSuccess, TapPay } = props;
