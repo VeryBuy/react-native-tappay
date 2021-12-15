@@ -2108,10 +2108,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
-"@types/react-native@^0.65.0":
-  version "0.65.3"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.65.3.tgz#1cc6eb292ab7f4487d3c378ff0be04940fa257b4"
-  integrity sha512-23YX98rFNR43f2rvEV1cQ8VAFSj9ylXPqmzQMotC45hsK/SCNtLwJx1mgZ5jkyqs9TLjspzU0jszr58+Z9seQQ==
+"@types/react-native@^0.66.9":
+  version "0.66.9"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.66.9.tgz#a051d1f1f3cd03df4b4870e91e416b71377a8b7a"
+  integrity sha512-lve1rgQadbOM82ZRiw6CvvManUeidDhlFtiXA+dErI7a7/NNxLM7kZVYDNKd/QQc5FgLlQ0Uof2QInup7OwsBg==
   dependencies:
     "@types/react" "*"
 
@@ -10326,10 +10326,10 @@ react-native-flip-card@^3.4.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-tappay@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.2.1.tgz#3a118ef505f63d8cf2e3d227e94cac0ec66b2401"
-  integrity sha512-uCMihTtnc5X43yWsdsnFtXnViKESRa4RYd0S7+lqIbfEUXUq2/ar8RPcYUV130No9E0pOlFIXoyG+B8Obfa3DQ==
+react-native-tappay@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.3.1.tgz#c454f4a3220469702bfa3ec689f0ec8a8df3222f"
+  integrity sha512-Cd46z2jqd7LXa11R+fWDf4EkNh65jY6ZBaaGe3QemZ4xl1DFdxlY6Ii/adcPJ3sPgORHV9/frwmjKKtE7YB2BA==
 
 react-native-web@^0.17.5:
   version "0.17.5"
@@ -10344,10 +10344,10 @@ react-native-web@^0.17.5:
     normalize-css-color "^1.0.2"
     prop-types "^15.6.0"
 
-react-native@0.66.0:
-  version "0.66.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.66.0.tgz#99bdd83a9a612a71b94242767989d666d445b007"
-  integrity sha512-m26TKwzsfHVdZ1hDG+7mZ4M4ftxFFZrhtiT0OXuwfBzmNtB3xhsJtYszPeizw33c9YNp8rvehKT3c4ldDCW6kA==
+react-native@0.66.4:
+  version "0.66.4"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.66.4.tgz#bf89a5fb18bd23046d889fb4de4ea2822a4d7805"
+  integrity sha512-9vx5dlSfQlKbbDtr8+xMon6qsmSu7jvjdXWZpEKh3XVKpUidbbODv7048gwVKX8YAel1egeR7hN8vzSeI6ssTw==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^6.0.0"
@@ -12107,10 +12107,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.8.3:
-  version "3.9.10"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
-  integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
+typescript@^4.5.4:
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.4.tgz#a17d3a0263bf5c8723b9c52f43c5084edf13c2e8"
+  integrity sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==
 
 ua-parser-js@^0.7.18:
   version "0.7.28"
