@@ -27,10 +27,6 @@
     "noFallthroughCasesInSwitch": true
   },
   "types": ["react", "react-native", "jest"],
-  "exclude": [
-    "android/**/*",
-    "ios/**/*",
-    "dist/**/*"
-  ],
-  "include": ["src"]
+  "exclude": ["android/**/*", "ios/**/*", "dist/**/*"],
+  "include": ["src", "example"]
 }
