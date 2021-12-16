@@ -2,8 +2,10 @@ module.exports = {
   semi: true,
   bracketSpacing: true,
   singleQuote: true,
-  tabWidth: 2,
   useTabs: false,
+  tabWidth: 2,
+  printWidth: 80,
+  jsxSingleQuote: false,
   trailingComma: 'all',
-  arrowParens: 'avoid',
-};
+  arrowParens: 'avoid'
+}

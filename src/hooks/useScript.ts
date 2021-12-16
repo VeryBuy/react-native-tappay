@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const cachedScripts: string[] = [];
 
 const SCRIPT_CHECK_TIMEOUT = 10000;
 const SCRIPT_CHECK_INTERVAL = 300;
 
-export default function useScript(
-  src: string,
-  id?: string,
-  checker?: () => boolean
-) {
+export default function useScript(src: string, id?: string, checker?: () => boolean) {
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,
@@ -19,7 +15,7 @@ export default function useScript(
   useEffect(
     () => {
       let script: HTMLScriptElement | null = null;
-      let timeout: number | null = null;
+      let timeout: ReturnType<typeof setTimeout> | null = null;
 
       const clearDelay = () => {
         if (timeout) {
@@ -28,7 +24,7 @@ export default function useScript(
         }
       };
 
-      const setDelay = (handler) => {
+      const setDelay = handler => {
         clearDelay();
         timeout = setTimeout(handler, SCRIPT_CHECK_INTERVAL);
       };
@@ -60,7 +56,7 @@ export default function useScript(
         const start = Date.now();
 
         function handler(resolve: Function, reject: (err: Error) => void) {
-          if (typeof checker !== "function") {
+          if (typeof checker !== 'function') {
             resolve();
 
             return;
@@ -69,7 +65,7 @@ export default function useScript(
           if (checker()) {
             resolve();
           } else if (Date.now() - start >= SCRIPT_CHECK_TIMEOUT) {
-            reject(new Error("timeout"));
+            reject(new Error('timeout'));
           } else {
             setDelay(() => handler(resolve, reject));
           }
@@ -90,7 +86,7 @@ export default function useScript(
         cachedScripts.push(src);
 
         // Create script
-        script = document.createElement("script");
+        script = document.createElement('script');
 
         script.src = src;
         script.async = true;
@@ -98,8 +94,8 @@ export default function useScript(
           script.id = id;
         }
 
-        script.addEventListener("load", handleLoad);
-        script.addEventListener("error", onScriptError);
+        script.addEventListener('load', handleLoad);
+        script.addEventListener('error', onScriptError);
 
         // Add script to document body
         document.body.appendChild(script);
@@ -108,14 +104,14 @@ export default function useScript(
       return () => {
         // Remove event listeners on cleanup
         if (script) {
-          script.removeEventListener("load", handleLoad);
-          script.removeEventListener("error", onScriptError);
+          script.removeEventListener('load', handleLoad);
+          script.removeEventListener('error', onScriptError);
         }
 
         clearDelay();
       };
     },
-    [] // Only re-run effect if script src changes
+    [checker, id, src], // Only re-run effect if script src changes
   );
 
   return [state.loaded, state.error];

@@ -1,5 +1,5 @@
-import { GetPrime } from "../common";
-import { CardBasicInfo } from "../card";
+import { GetPrime } from '../common';
+import { CardBasicInfo } from '../card';
 
 interface Field {
   element: HTMLElement | string;
@@ -12,7 +12,7 @@ export interface CardSetupArgs {
     expirationDate: Field;
     ccv?: Field;
   };
-  styles: any;
+  styles: unknown;
 }
 
 export interface Card extends CardBasicInfo {
@@ -56,7 +56,7 @@ export enum UpdateCardStatus {
 }
 
 export interface UpdateResult {
-  cardType: "mastercard" | "visa" | "jcb" | "amex" | "unionpay" | "unknown";
+  cardType: 'mastercard' | 'visa' | 'jcb' | 'amex' | 'unionpay' | 'unknown';
   /** true = 全部欄位皆為正確，可以呼叫 getPrime */
   canGetPrime: boolean;
   /**	true = 任何欄位有錯誤 */
