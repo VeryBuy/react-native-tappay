@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
-import safeAwait from 'safe-await';
-import { Text, SafeAreaView, Button } from 'react-native';
+import { Button, SafeAreaView, Text } from 'react-native';
 import { LiteCreditCardInput } from 'react-native-credit-card-input';
+import safeAwait from 'safe-await';
 
-import { Props, AppCardInfo } from './types';
+import { AppCardInfo, Props } from './types';
 
 const DirectPay: FC<Props> = props => {
   const { TapPay } = props;

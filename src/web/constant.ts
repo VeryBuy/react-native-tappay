@@ -1,2 +1,2 @@
-export const TPDIframeId = "TPDirectIframe";
-export const TAP_PAY_SDK_PATH = "https://js.tappaysdk.com/tpdirect/v5.6.0";
+export const TPDIframeId = 'TPDirectIframe';
+export const TAP_PAY_SDK_PATH = 'https://js.tappaysdk.com/tpdirect/v5.6.0';

@@ -5,7 +5,11 @@ const cachedScripts: string[] = [];
 const SCRIPT_CHECK_TIMEOUT = 10000;
 const SCRIPT_CHECK_INTERVAL = 300;
 
-export default function useScript(src: string, id?: string, checker?: () => boolean) {
+export default function useScript(
+  src: string,
+  id?: string,
+  checker?: () => boolean,
+) {
   // Keeping track of script loaded and error state
   const [state, setState] = useState({
     loaded: false,

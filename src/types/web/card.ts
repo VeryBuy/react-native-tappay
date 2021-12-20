@@ -1,5 +1,5 @@
-import { GetPrime } from '../common';
 import { CardBasicInfo } from '../card';
+import { GetPrime } from '../common';
 
 interface Field {
   element: HTMLElement | string;

@@ -1,5 +1,5 @@
-import { CardSetupArgs, GetCardPrime, UpdateCallback } from "./card";
-import { GetLinePayPrime } from "./linePay";
+import { CardSetupArgs, GetCardPrime, UpdateCallback } from './card';
+import { GetLinePayPrime } from './linePay';
 
 export interface TapPayDirect {
   appID: string;

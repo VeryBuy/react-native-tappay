@@ -1,8 +1,8 @@
-import React, { useEffect, useState, FC } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { FC, useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import safeAwait from 'safe-await';
 
-import { cardSetupConfig, CARD_FIELD_ID } from './constants';
+import { CARD_FIELD_ID, cardSetupConfig } from './constants';
 import { Props } from './types';
 
 const DirectPay: FC<Props> = props => {

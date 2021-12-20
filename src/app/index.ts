@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-
 import { NativeModules } from 'react-native';
+
 import { SetupArgs, UseTapPay } from '../types/TapPayInstance';
 
 const { TapPay } = NativeModules;

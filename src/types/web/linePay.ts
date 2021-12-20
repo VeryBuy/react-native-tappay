@@ -1,4 +1,4 @@
-import { GetPrime } from "../common";
+import { GetPrime } from '../common';
 
 export interface GetLinePayPrime extends GetPrime {
   cs_key: string;

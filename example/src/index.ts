@@ -1,4 +1,5 @@
 import { AppRegistry, Platform } from 'react-native';
+
 import App from './components/App';
 
 const APP_NAME = 'example';
