@@ -37,4 +37,4 @@ export interface GetCardPrimeResolveValue extends CardBasicInfo {
   };
 }
 
-export type { UpdateCallback, CardSetupArgs } from "./web/card";
+export type { UpdateCallback, CardSetupArgs } from './web/card';

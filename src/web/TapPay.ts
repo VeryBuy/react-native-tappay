@@ -1,5 +1,9 @@
+import {
+  CardSetupArgs,
+  GetCardPrimeResolveValue,
+  UpdateCallback,
+} from '../types/card';
 import { GetPrimeStatus } from '../types/common';
-import { GetCardPrimeResolveValue, CardSetupArgs, UpdateCallback } from '../types/card';
 import { TapPayDirect } from '../types/web';
 
 declare global {
@@ -20,12 +24,22 @@ export class TapPayMethods {
   };
 
   // This method is worked on android or iOS.
-  validateCard = (_cardNumber: string, _dueMonth: string, _dueYear: string, _CCV: string) => {
+  validateCard = (
+    _cardNumber: string,
+    _dueMonth: string,
+    _dueYear: string,
+    _CCV: string,
+  ) => {
     return Promise.resolve();
   };
 
   // This method is worked on android or iOS.
-  setCard = (_cardNumber: string, _dueMonth: string, _dueYear: string, _CCV: string) => {
+  setCard = (
+    _cardNumber: string,
+    _dueMonth: string,
+    _dueYear: string,
+    _CCV: string,
+  ) => {
     return;
   };
 
