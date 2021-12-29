@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tw.com.verybuy.tappay">
-
+    <queries>
+        <package android:name="jp.naver.line.android" />
+    </queries>
 </manifest>
