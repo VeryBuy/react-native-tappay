@@ -20,8 +20,8 @@ We use it on our production App/MWeb for 2 years. Keep update and PR welcome.
 
 # Tappay SDK support Version
 * Web: [5.6.0] <https://github.com/TapPay/tappay-web-example/releases/tag/v5.6.0>
-* Android: [3.3.0] <https://github.com/TapPay/tappay-android-example/releases/tag/3.3.2>
-* iOS: [2.11.1] <https://github.com/TapPay/tappay-ios-example/releases/tag/v2.11.0>
+* Android: [3.4.5] <https://github.com/TapPay/tappay-android-example/releases/tag/3.4.5>
+* iOS: [2.13.0] <https://github.com/TapPay/tappay-ios-example/releases/tag/v2.13.0>
 
 ## Getting started
 
