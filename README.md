@@ -27,7 +27,7 @@ We use it on our production App/MWeb for 2 years. Keep update and PR welcome.
 
 `$ npm install react-native-tappay --save`
 
-or 
+or
 
 `$ yarn add react-native-tappay`
 
@@ -38,6 +38,27 @@ On newer versions of React Native, linking is automatic.
 ### React Native 0.59 and lower
 
 `$ react-native link react-native-tappay`
+
+#### iOS
+
+CocoaPods on iOS needs this extra step:
+
+```
+$ cd ios
+$ pod install
+```
+
+#### Android
+
+Add these lines in your build.gradle:
+
+```diff
+flatDir {
+  ...
++   dirs "$rootDir/../node_modules/react-native-tappay/android/libs"
+  ...
+}
+```
 
 ## Usage
 
