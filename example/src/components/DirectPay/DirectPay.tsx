@@ -3,9 +3,10 @@ import { Button, SafeAreaView, Text } from 'react-native';
 import { LiteCreditCardInput } from 'react-native-credit-card-input';
 import safeAwait from 'safe-await';
 
-import { AppCardInfo, Props } from './types';
+import { ComponentCommonProps } from '../../types/common';
+import { AppCardInfo } from './types';
 
-const DirectPay: FC<Props> = props => {
+const DirectPay: FC<ComponentCommonProps> = props => {
   const { TapPay } = props;
   const [cardInfo, setCardInfo] = useState({} as AppCardInfo);
 
