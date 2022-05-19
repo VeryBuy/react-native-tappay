@@ -2,10 +2,10 @@ import React, { FC, useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import safeAwait from 'safe-await';
 
+import { ComponentCommonProps } from '../../types/common';
 import { CARD_FIELD_ID, cardSetupConfig } from './constants';
-import { Props } from './types';
 
-const DirectPay: FC<Props> = props => {
+const DirectPay: FC<ComponentCommonProps> = props => {
   const { isLoadedSuccess, TapPay } = props;
   const [hasNumberError, setHasNumberError] = useState(false);
   const [hasExpirationDateError, setHasExpirationDateError] = useState(false);

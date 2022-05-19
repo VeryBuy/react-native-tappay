@@ -10326,6 +10326,11 @@ react-native-flip-card@^3.4.1:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-simple-radio-button@^2.7.4:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.4.tgz#86e2dbe8af9e6bf60eee088f60466f7a975e7758"
+  integrity sha512-QOZNmJUn0ViBGU+at7wAG/uGzd5PfXi0kMHr9lfTCLXknW/f9f2fOVjxjdHvOCdf/zA/eMJBjGjtusSDzQf1+w==
+
 react-native-tappay@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.3.1.tgz#c454f4a3220469702bfa3ec689f0ec8a8df3222f"
