@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import { useTapPay } from 'react-native-tappay';
 
@@ -16,6 +16,14 @@ const radioProps = Object.values(PayBy).map(pay => ({
 const App = () => {
   const [isLoadedSuccess, TapPay] = useTapPay(TAPPAY_CONFIG);
   const [payBy, setPayBy] = useState(PayBy.DirectPay);
+
+  if (!isLoadedSuccess) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
 
   const renderPayment = () => {
     const props = { isLoadedSuccess, TapPay };

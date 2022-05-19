@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   activityIndicator: {
-    marginLeft: 10,
+    position: 'absolute',
+    right: 20,
   },
 });
