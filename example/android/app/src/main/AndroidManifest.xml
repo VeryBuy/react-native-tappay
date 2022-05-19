@@ -21,5 +21,17 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity
+        android:name=".LinePayActivity"
+        android:launchMode="singleTask">
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+
+          <data android:host="lne_pay_redirect" android:scheme="myexample" />
+        </intent-filter>
+      </activity>
     </application>
 </manifest>
