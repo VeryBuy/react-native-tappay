@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { Button, SafeAreaView, Text } from 'react-native';
 import { LiteCreditCardInput } from 'react-native-credit-card-input';
 import safeAwait from 'safe-await';

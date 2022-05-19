@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import safeAwait from 'safe-await';
 

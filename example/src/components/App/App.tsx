@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import { useTapPay } from 'react-native-tappay';

@@ -1,4 +1,4 @@
-import React, { VFC, useCallback } from 'react';
+import { VFC, useCallback } from 'react';
 import {
   ActivityIndicator,
   Pressable,
