@@ -27,7 +27,6 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
 
 # Android/IntelliJ
 #
@@ -36,11 +35,13 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 
 # BUCK
 buck-out/
 \.buckd/
 *.keystore
+!debug.keystore
 
 # Use compressed file
 ios/TPDirect.framework
