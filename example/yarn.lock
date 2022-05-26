@@ -11271,10 +11271,10 @@ react-native-simple-radio-button@^2.7.4:
   resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.4.tgz#86e2dbe8af9e6bf60eee088f60466f7a975e7758"
   integrity sha512-QOZNmJUn0ViBGU+at7wAG/uGzd5PfXi0kMHr9lfTCLXknW/f9f2fOVjxjdHvOCdf/zA/eMJBjGjtusSDzQf1+w==
 
-react-native-tappay@^1.4.0-beta.6:
-  version "1.4.0-beta.6"
-  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.4.0-beta.6.tgz#cf6b5dc0b61fcf9e89a4cdea2619f7bbd4455878"
-  integrity sha512-LG/tyj3KzvGdEZmk7Ey++ieXqtoGm7vk/Phr/k9CEs7QU6z33GHo3Ee1MVqzzsgJJ/JUdS1ACeo/ZdEqK0PjYA==
+react-native-tappay@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-tappay/-/react-native-tappay-1.4.2.tgz#475b7531740074f04c68e8d7ee0c9e0b17b3499c"
+  integrity sha512-rnXWup6usZ9k+w7MFFRLG5BRDK6GcYQdNVAcF4Kn7/8j3pK1NtIaV756XyxjKEsHwlUqjM6xeziyd3NkGJUO2Q==
 
 react-native-web@^0.17.5:
   version "0.17.5"
