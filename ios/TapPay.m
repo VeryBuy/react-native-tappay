@@ -54,4 +54,6 @@ RCT_EXTERN_METHOD(removeCard)
 RCT_EXTERN_METHOD(getDirectPayPrime: (RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(isApplePayAvailable:(RCTPromiseResolveBlock)promise rejector: (RCTPromiseRejectBlock)reject)
+
 @end

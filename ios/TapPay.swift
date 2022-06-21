@@ -22,6 +22,7 @@ class TapPay: NSObject {
     
     private var tpdCard: TPDCard?
     private var tpdLinePay: TPDLinePay?
+    private var tpdApplePay: TPDApplePay?
     
     @objc
     func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
@@ -125,6 +126,12 @@ class TapPay: NSObject {
         } else {
             reject("Fail", "LINE Pay transaction fail.", nil)
         }
+    }
+    
+    @objc
+    func isApplePayAvailable(_ promise: RCTPromiseResolveBlock, rejector reject: RCTPromiseRejectBlock) {
+        
+        promise(TPDApplePay.canMakePayments())
     }
     
     @objc
