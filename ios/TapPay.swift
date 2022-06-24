@@ -24,6 +24,7 @@ class TapPay: NSObject {
     private var tpdLinePay: TPDLinePay?
     private var tpdApplePay: TPDApplePay?
     
+    
     @objc
     func setup(_ appId: NSNumber, appKey: NSString, serverType: NSString) {
         let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
@@ -129,12 +130,6 @@ class TapPay: NSObject {
     }
     
     @objc
-    func isApplePayAvailable(_ promise: RCTPromiseResolveBlock, rejector reject: RCTPromiseRejectBlock) {
-        
-        promise(TPDApplePay.canMakePayments())
-    }
-    
-    @objc
     func setCard(
         _ cardNumber: String,
         withDueMonth dueMonth: String,
@@ -177,5 +172,105 @@ class TapPay: NSObject {
                 reject(String(status), message, nil)
             }.createToken(withGeoLocation: "UNKNOWN")
         }
+    }
+    
+    @available(iOS 9.0, *)
+    @objc
+    func merchantSetting(merchantData: NSDictionary, shippingData: NSDictionary) -> TPDMerchant {
+        
+        let merchantName = merchantData["merchantName"] as! String
+        let merchantIdentifier = merchantData["merchantIdentifier"] as! String
+        let countryCode = merchantData["countryCode"] as! String
+        let currencyCode = merchantData["currencyCode"] as! String
+        
+        var merchant : TPDMerchant!
+
+        merchant = TPDMerchant()
+        merchant.merchantName               = merchantName
+        merchant.merchantCapability         = .capability3DS;
+        merchant.applePayMerchantIdentifier = merchantIdentifier
+        merchant.countryCode                = countryCode;
+        merchant.currencyCode               = currencyCode;
+        merchant.supportedNetworks          = [.amex, .masterCard, .visa]
+    
+        let shipping = PKShippingMethod()
+        shipping.identifier = shippingData["identifier"] as! String
+        shipping.detail     = shippingData["detail"] as! String
+        shipping.amount     = NSDecimalNumber(value: shippingData["amount"] as! Double);
+        shipping.label      = shippingData["label"] as! String
+        
+        merchant.shippingMethods = [shipping]
+        
+        return merchant
+    }
+    
+    @available(iOS 9.0, *)
+    @objc
+    func consumerSetting() -> TPDConsumer {
+        
+        var consumer : TPDConsumer!
+        // Set Consumer Contact.
+        let contact = PKContact()
+        
+        let nameComponent    = PersonNameComponents()
+        contact.name    = nameComponent;
+        
+        consumer = TPDConsumer()
+        consumer.billingContact     = contact
+        consumer.shippingContact    = contact
+        //consumer.requiredShippingAddressFields  = []
+        //consumer.requiredBillingAddressFields = []
+        
+
+    
+        return consumer
+    }
+    
+    @available(iOS 9.0, *)
+    @objc
+    func cartSetting(cartData: [NSDictionary]) -> TPDCart {
+        
+        var cart     : TPDCart!
+            cart = TPDCart()
+            
+            cart.isAmountPending = true
+            cart.isShowTotalAmount = true
+        
+        cartData.forEach({ (item) in
+            let itemName = item["itemName"] as! String
+            let count = item["count"] as! Int
+            let price = item["price"] as! Int
+            
+            let tpdItem = TPDPaymentItem(itemName: "\(itemName)x\(count)",
+                                         withAmount: NSDecimalNumber(string: "\(price * count)"),
+                                         withIsVisible: true)
+            cart.add(tpdItem)
+        })
+        return cart
+    }
+    
+    @objc
+    func isApplePayAvailable(_ promise: RCTPromiseResolveBlock, rejector reject: RCTPromiseRejectBlock) {
+        
+        promise(TPDApplePay.canMakePayments())
+    }
+  
+    @available(iOS 9.0, *)
+    @objc
+    func getApplePayPrime(
+        _ merchantData: NSDictionary,
+        shippingData: NSDictionary,
+        cartData: [NSDictionary]
+    ) {
+        print("getApplePayPrime");
+       
+        let merchant = merchantSetting(merchantData: merchantData, shippingData: shippingData)
+        let consumer = consumerSetting()
+        let cart     = cartSetting(cartData: cartData)
+        var applePay : TPDApplePay!
+
+        applePay = TPDApplePay.setupWthMerchant(merchant, with: consumer, with: cart, withDelegate: self)
+
+        applePay.startPayment()
     }
 }

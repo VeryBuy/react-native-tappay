@@ -11,6 +11,24 @@ export interface SetupArgs {
   rbaId?: string;
   rbaKey?: string;
 }
+export interface MerchantData {
+  merchantName: string;
+  merchantIdentifier: string;
+  countryCode: string;
+  currencyCode: string;
+}
+export interface ShippingData {
+  identifier: string;
+  detail: string;
+  amount: number;
+  label: string;
+}
+export interface CartItem {
+  itemName: string;
+  count: number;
+  price: number;
+}
+export type CartData = Array<CartItem>;
 
 type IsLoadedSuccess = boolean;
 
@@ -36,4 +54,10 @@ export default interface TapPayInstance {
   getLinePayPrime: (returnUrl: string) => Promise<{ prime: string | null }>;
   isLinePayAvailable: () => Promise<boolean>;
   handleLinePayURL: (url: string) => Promise<boolean>;
+  isApplePayAvailable: () => Promise<boolean>;
+  getApplePayPrime: (
+    merchantData: MerchantData,
+    shippingData: ShippingData,
+    cartData: CartData,
+  ) => void;
 }
