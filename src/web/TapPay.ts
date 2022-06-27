@@ -113,8 +113,8 @@ export class TapPayMethods {
   };
 
   isApplePayAvailable = () => {
-    return Promise.resolve(false);
+    return Promise.reject(null);
   };
 
-  getApplePayPrime = () => null;
+  getApplePayPrime = () => Promise.reject(null);
 }

@@ -59,6 +59,8 @@ RCT_EXTERN_METHOD(isApplePayAvailable:(RCTPromiseResolveBlock)promise rejector: 
 
 RCT_EXTERN_METHOD(getApplePayPrime: (NSDictionary)merchantData
                   shippingData: (NSDictionary)shippingData
-                  cartData: (NSDictionaryArray)cartData)
+                  cartData: (NSDictionaryArray)cartData
+                  resolver: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject)
 
 @end

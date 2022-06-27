@@ -59,5 +59,5 @@ export default interface TapPayInstance {
     merchantData: MerchantData,
     shippingData: ShippingData,
     cartData: CartData,
-  ) => void;
+  ) => Promise<{ prime: string | null }>;
 }
