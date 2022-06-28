@@ -280,9 +280,9 @@ class TapPay: NSObject {
 
 extension TapPay : TPDApplePayDelegate {
     func tpdApplePayDidStartPayment(_ applePay: TPDApplePay!) {
-//        print("=====================================================")
-//        print("Apple Pay On Start")
-//        print("===================================================== \n\n")
+        print("=====================================================")
+        print("Apple Pay On Start")
+        print("===================================================== \n\n")
     }
     
     func tpdApplePay(_ applePay: TPDApplePay!, didSuccessPayment result: TPDTransactionResult!) {
@@ -291,101 +291,63 @@ extension TapPay : TPDApplePayDelegate {
             print("===================================================== \n\n")
         }
         
-        func tpdApplePay(_ applePay: TPDApplePay!, didFailurePayment result: TPDTransactionResult!) {
-            print("=====================================================")
-            print("Apple Pay Did Failure ==> Message : \(result.message), ErrorCode : \(result.status)")
-            print("===================================================== \n\n")
-            if ((self.applePayRejector) != nil) {
-                self.applePayRejector(result.message, String(result.status), nil);
-                self.applePayRejector = nil;
-            }
+    func tpdApplePay(_ applePay: TPDApplePay!, didFailurePayment result: TPDTransactionResult!) {
+        print("=====================================================")
+        print("Apple Pay Did Failure ==> Message : \(result.message), ErrorCode : \(result.status)")
+        print("===================================================== \n\n")
+        if ((self.applePayRejector) != nil) {
+            self.applePayRejector(result.message, String(result.status), nil);
         }
-        
-        func tpdApplePayDidCancelPayment(_ applePay: TPDApplePay!) {
-            print("=====================================================")
-            print("Apple Pay Did Cancel")
-            print("===================================================== \n\n")
-            if ((self.applePayRejector) != nil) {
-                self.applePayRejector("User canceled", "-1", nil);
-                self.applePayRejector = nil;
-            }
+    }
+    
+    func tpdApplePayDidCancelPayment(_ applePay: TPDApplePay!) {
+        print("=====================================================")
+        print("Apple Pay Did Cancel")
+        print("===================================================== \n\n")
+        if ((self.applePayRejector) != nil) {
+            self.applePayRejector("User canceled", "-1", nil);
         }
-        
-        func tpdApplePayDidFinishPayment(_ applePay: TPDApplePay!) {
-            print("=====================================================")
-            print("Apple Pay Did Finish")
-            print("===================================================== \n\n")
-            if ((self.applePayResolver) != nil) {
-                self.applePayResolver = nil;
-            }
+    }
+    
+    func tpdApplePayDidFinishPayment(_ applePay: TPDApplePay!) {
+        print("=====================================================")
+        print("Apple Pay Did Finish")
+        print("===================================================== \n\n")
+        if ((self.applePayResolver) != nil) {
+            self.applePayResolver = nil;
         }
-        
-        func tpdApplePay(_ applePay: TPDApplePay!, didSelect shippingMethod: PKShippingMethod!) {
-            print("=====================================================")
-            print("======> didSelectShippingMethod: ")
-            print("Shipping Method.identifier : \(shippingMethod.identifier?.description)")
-            print("Shipping Method.detail : \(shippingMethod.detail)")
-            print("===================================================== \n\n")
+        if ((self.applePayRejector) != nil) {
+            self.applePayRejector = nil;
         }
-        
-        func tpdApplePay(_ applePay: TPDApplePay!, didSelect paymentMethod: PKPaymentMethod!, cart: TPDCart!) -> TPDCart! {
-            //
-            print("=====================================================");
-            print("======> didSelectPaymentMethod: ");
-            print("===================================================== \n\n");
-//            if paymentMethod.type == .debit {
-//                self.cart.add(TPDPaymentItem(itemName: "Discount", withAmount: NSDecimalNumber(string: "-1.00")))
-//            }
+    }
+    
+    // With Payment Handle
+    func tpdApplePay(_ applePay: TPDApplePay!, didReceivePrime prime: String!, withExpiryMillis expiryMillis: Int, with cardInfo: TPDCardInfo, withMerchantReferenceInfo merchantReferenceInfo: [AnyHashable : Any]!) {
+        // 1. Send Your Prime To Your Server, And Handle Payment With Result
+        // ...
+        print("=====================================================");
+        print("======> didReceivePrime");
+        print("Prime : \(prime!)");
+        print("Expiry millis : \(expiryMillis)");
+        print("total Amount :   \(applePay.cart.totalAmount!)")
+        print("Client IP : \(applePay.consumer.clientIP!)")
+        print("merchantReferenceInfo : \(merchantReferenceInfo["affiliateCodes"]!)")
+        print("shippingContact.name : \(applePay.consumer.shippingContact?.name?.givenName) \(applePay.consumer.shippingContact?.name?.familyName)");
+        print("shippingContact.emailAddress : \(applePay.consumer.shippingContact?.emailAddress)");
+        print("shippingContact.phoneNumber : \(applePay.consumer.shippingContact?.phoneNumber?.stringValue)");
 
-            return cart;
+        DispatchQueue.main.async {
+            let payment = "Use below cURL to proceed the payment.\ncurl -X POST \\\nhttps://sandbox.tappaysdk.com/tpc/payment/pay-by-prime \\\n-H \'content-type: application/json\' \\\n-H \'x-api-key: partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\' \\\n-d \'{ \n \"prime\": \"\(prime!)\", \"partner_key\": \"partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\", \"merchant_id\": \"GlobalTesting_CTBC\", \"details\":\"TapPay Test\", \"amount\": \(applePay.cart.totalAmount!.stringValue), \"cardholder\": { \"phone_number\": \"+886923456789\", \"name\": \"Jane Doe\", \"email\": \"Jane@Doe.com\", \"zip_code\": \"12345\", \"address\": \"123 1st Avenue, City, Country\", \"national_id\": \"A123456789\" }, \"remember\": true }\'"
+            print(payment)
+
         }
-        
-        func tpdApplePay(_ applePay: TPDApplePay!, canAuthorizePaymentWithShippingContact shippingContact: PKContact?) -> Bool {
-            print("=====================================================")
-            print("======> canAuthorizePaymentWithShippingContact ")
-            print("shippingContact.name : \(shippingContact?.name?.givenName) \(shippingContact?.name?.familyName)")
-            print("shippingContact.emailAddress : \(shippingContact?.emailAddress)")
-            print("shippingContact.phoneNumber : \(shippingContact?.phoneNumber?.stringValue)")
-            print("===================================================== \n\n")
-            return true;
+
+        // 2. If Payment Success, set paymentReault = ture.
+        let paymentReault = true;
+        applePay.showPaymentResult(paymentReault)
+        if ((self.applePayResolver) != nil) {
+            self.applePayResolver([ "prime": prime ])
         }
-        
-        // With Payment Handle
-        func tpdApplePay(_ applePay: TPDApplePay!, didReceivePrime prime: String!, withExpiryMillis expiryMillis: Int, with cardInfo: TPDCardInfo, withMerchantReferenceInfo merchantReferenceInfo: [AnyHashable : Any]!) {
-            // 1. Send Your Prime To Your Server, And Handle Payment With Result
-            // ...
-            print("=====================================================");
-            print("======> didReceivePrime");
-            print("Prime : \(prime!)");
-            print("Expiry millis : \(expiryMillis)");
-            print("total Amount :   \(applePay.cart.totalAmount!)")
-            print("Client IP : \(applePay.consumer.clientIP!)")
-            print("merchantReferenceInfo : \(merchantReferenceInfo["affiliateCodes"]!)")
-            print("shippingContact.name : \(applePay.consumer.shippingContact?.name?.givenName) \(applePay.consumer.shippingContact?.name?.familyName)");
-            print("shippingContact.emailAddress : \(applePay.consumer.shippingContact?.emailAddress)");
-            print("shippingContact.phoneNumber : \(applePay.consumer.shippingContact?.phoneNumber?.stringValue)");
-
-//            let paymentMethod = self.consumer.paymentMethod!
-//
-//            print("type : \(paymentMethod.type.rawValue)")
-//            print("Network : \(paymentMethod.network!.rawValue)")
-//            print("Display Name : \(paymentMethod.displayName!)")
-//
-//            print("===================================================== \n\n");
-
-            DispatchQueue.main.async {
-                let payment = "Use below cURL to proceed the payment.\ncurl -X POST \\\nhttps://sandbox.tappaysdk.com/tpc/payment/pay-by-prime \\\n-H \'content-type: application/json\' \\\n-H \'x-api-key: partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\' \\\n-d \'{ \n \"prime\": \"\(prime!)\", \"partner_key\": \"partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\", \"merchant_id\": \"GlobalTesting_CTBC\", \"details\":\"TapPay Test\", \"amount\": \(applePay.cart.totalAmount!.stringValue), \"cardholder\": { \"phone_number\": \"+886923456789\", \"name\": \"Jane Doe\", \"email\": \"Jane@Doe.com\", \"zip_code\": \"12345\", \"address\": \"123 1st Avenue, City, Country\", \"national_id\": \"A123456789\" }, \"remember\": true }\'"
-//                self.displayText.text = payment
-                print(payment)
-
-            }
-
-            // 2. If Payment Success, set paymentReault = ture.
-            let paymentReault = true;
-            applePay.showPaymentResult(paymentReault)
-            if ((self.applePayResolver) != nil) {
-                self.applePayResolver(prime)
-            }
-        }
+    }
 }
 
