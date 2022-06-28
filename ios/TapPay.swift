@@ -25,6 +25,7 @@ class TapPay: NSObject {
     private var tpdApplePay: TPDApplePay?
     var applePayResolver: RCTPromiseResolveBlock! = nil
     var applePayRejector: RCTPromiseRejectBlock! = nil
+    var applePay : TPDApplePay!
     
     
     @objc
