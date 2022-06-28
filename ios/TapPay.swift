@@ -236,9 +236,6 @@ class TapPay: NSObject {
         var cart     : TPDCart!
             cart = TPDCart()
             
-            cart.isAmountPending = true
-            cart.isShowTotalAmount = true
-        
         cartData.forEach({ (item) in
             let itemName = item["itemName"] as! String
             let count = item["count"] as! Int
@@ -272,7 +269,6 @@ class TapPay: NSObject {
         let merchant = merchantSetting(merchantData: merchantData, shippingData: shippingData)
         let consumer = consumerSetting()
         let cart     = cartSetting(cartData: cartData)
-        var applePay : TPDApplePay!
 
         applePay = TPDApplePay.setupWthMerchant(merchant, with: consumer, with: cart, withDelegate: self)
 //
