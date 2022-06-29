@@ -286,10 +286,10 @@ extension TapPay : TPDApplePayDelegate {
     }
     
     func tpdApplePay(_ applePay: TPDApplePay!, didSuccessPayment result: TPDTransactionResult!) {
-            print("=====================================================")
-            print("Apple Pay Did Success ==> Amount : \(result.amount.stringValue)")
-            print("===================================================== \n\n")
-        }
+        print("=====================================================")
+        print("Apple Pay Did Success ==> Amount : \(result.amount.stringValue)")
+        print("===================================================== \n\n")
+    }
         
     func tpdApplePay(_ applePay: TPDApplePay!, didFailurePayment result: TPDTransactionResult!) {
         print("=====================================================")
@@ -335,12 +335,6 @@ extension TapPay : TPDApplePayDelegate {
         print("shippingContact.name : \(applePay.consumer.shippingContact?.name?.givenName) \(applePay.consumer.shippingContact?.name?.familyName)");
         print("shippingContact.emailAddress : \(applePay.consumer.shippingContact?.emailAddress)");
         print("shippingContact.phoneNumber : \(applePay.consumer.shippingContact?.phoneNumber?.stringValue)");
-
-        DispatchQueue.main.async {
-            let payment = "Use below cURL to proceed the payment.\ncurl -X POST \\\nhttps://sandbox.tappaysdk.com/tpc/payment/pay-by-prime \\\n-H \'content-type: application/json\' \\\n-H \'x-api-key: partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\' \\\n-d \'{ \n \"prime\": \"\(prime!)\", \"partner_key\": \"partner_6ID1DoDlaPrfHw6HBZsULfTYtDmWs0q0ZZGKMBpp4YICWBxgK97eK3RM\", \"merchant_id\": \"GlobalTesting_CTBC\", \"details\":\"TapPay Test\", \"amount\": \(applePay.cart.totalAmount!.stringValue), \"cardholder\": { \"phone_number\": \"+886923456789\", \"name\": \"Jane Doe\", \"email\": \"Jane@Doe.com\", \"zip_code\": \"12345\", \"address\": \"123 1st Avenue, City, Country\", \"national_id\": \"A123456789\" }, \"remember\": true }\'"
-            print(payment)
-
-        }
 
         // 2. If Payment Success, set paymentReault = ture.
         let paymentReault = true;
