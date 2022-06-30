@@ -194,7 +194,11 @@ class TapPay: NSObject {
         merchant.applePayMerchantIdentifier = merchantIdentifier
         merchant.countryCode                = countryCode;
         merchant.currencyCode               = currencyCode;
-        merchant.supportedNetworks          = [.amex, .masterCard, .visa, .JCB]
+        if #available(iOS 10.1, *) {
+            merchant.supportedNetworks          = [.amex, .masterCard, .visa, .JCB]
+        } else {
+            merchant.supportedNetworks          = [.amex, .masterCard, .visa]
+        }
     
         let shipping = PKShippingMethod()
         shipping.identifier = shippingData["identifier"] as! String
