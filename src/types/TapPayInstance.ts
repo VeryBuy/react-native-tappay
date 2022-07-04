@@ -17,12 +17,6 @@ export interface MerchantData {
   countryCode: string;
   currencyCode: string;
 }
-export interface ShippingData {
-  identifier: string;
-  detail: string;
-  amount: number;
-  label: string;
-}
 export interface CartItem {
   itemName: string;
   count: number;
@@ -57,7 +51,6 @@ export default interface TapPayInstance {
   isApplePayAvailable: () => Promise<boolean>;
   getApplePayPrime: (
     merchantData: MerchantData,
-    shippingData: ShippingData,
     cartData: CartData,
   ) => Promise<{ prime: string | null }>;
 }

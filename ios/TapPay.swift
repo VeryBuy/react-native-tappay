@@ -179,7 +179,7 @@ class TapPay: NSObject {
     
     @available(iOS 9.0, *)
     @objc
-    func merchantSetting(merchantData: NSDictionary, shippingData: NSDictionary) -> TPDMerchant {
+    func merchantSetting(merchantData: NSDictionary) -> TPDMerchant {
         
         let merchantName = merchantData["merchantName"] as! String
         let merchantIdentifier = merchantData["merchantIdentifier"] as! String
@@ -200,14 +200,6 @@ class TapPay: NSObject {
             merchant.supportedNetworks          = [.amex, .masterCard, .visa]
         }
     
-        let shipping = PKShippingMethod()
-        shipping.identifier = shippingData["identifier"] as! String
-        shipping.detail     = shippingData["detail"] as! String
-        shipping.amount     = NSDecimalNumber(value: shippingData["amount"] as! Double);
-        shipping.label      = shippingData["label"] as! String
-        
-        merchant.shippingMethods = [shipping]
-        
         return merchant
     }
     
@@ -263,14 +255,13 @@ class TapPay: NSObject {
     @objc
     func getApplePayPrime(
         _ merchantData: NSDictionary,
-        shippingData: NSDictionary,
         cartData: [NSDictionary],
         resolver resolve: @escaping RCTPromiseResolveBlock,
         rejecter reject: @escaping RCTPromiseRejectBlock
     ) {
         print("getApplePayPrime");
        
-        let merchant = merchantSetting(merchantData: merchantData, shippingData: shippingData)
+        let merchant = merchantSetting(merchantData: merchantData)
         let consumer = consumerSetting()
         let cart     = cartSetting(cartData: cartData)
 
