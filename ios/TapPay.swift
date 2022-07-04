@@ -234,11 +234,10 @@ class TapPay: NSObject {
             
         cartData.forEach({ (item) in
             let itemName = item["itemName"] as! String
-            let count = item["count"] as! Int
-            let price = item["price"] as! Int
+            let price = item["price"] as! Double
             
-            let tpdItem = TPDPaymentItem(itemName: "\(itemName)x\(count)",
-                                         withAmount: NSDecimalNumber(string: "\(price * count)"),
+            let tpdItem = TPDPaymentItem(itemName: itemName,
+                                         withAmount: NSDecimalNumber(value: price),
                                          withIsVisible: true)
             cart.add(tpdItem)
         })

@@ -19,7 +19,6 @@ export interface MerchantData {
 }
 export interface CartItem {
   itemName: string;
-  count: number;
   price: number;
 }
 export type CartData = Array<CartItem>;
