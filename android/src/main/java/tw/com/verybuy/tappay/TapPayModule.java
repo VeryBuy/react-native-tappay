@@ -224,4 +224,14 @@ public class TapPayModule extends ReactContextBaseJavaModule {
             }
         });
     }
+
+    @ReactMethod
+    public void isApplePayAvailable(final Promise promise) throws TPDLinePayException {
+        promise.resolve(false);
+    }
+
+    @ReactMethod
+    public void getApplePayPrime(final Promise promise) throws TPDLinePayException {
+        promise.reject("Fail", "Not Support on Android");
+    }
 }

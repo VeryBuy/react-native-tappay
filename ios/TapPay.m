@@ -7,6 +7,7 @@
 //
 
 #import <React/RCTBridgeModule.h>
+#import "DirectPay-Bridging-Header.h"
 
 @interface RCT_EXTERN_MODULE(TapPay, NSObject)
 RCT_EXTERN_METHOD(setup: (nonnull NSNumber*)appId
@@ -52,6 +53,13 @@ RCT_EXTERN_METHOD(setCard: (NSString*)cardNumber
 RCT_EXTERN_METHOD(removeCard)
 
 RCT_EXTERN_METHOD(getDirectPayPrime: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(isApplePayAvailable:(RCTPromiseResolveBlock)promise rejector: (RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(getApplePayPrime: (NSDictionary)merchantData
+                  cartData: (NSDictionaryArray)cartData
+                  resolver: (RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
 
 @end

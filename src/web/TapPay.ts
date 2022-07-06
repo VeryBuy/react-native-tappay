@@ -111,4 +111,12 @@ export class TapPayMethods {
   handleLinePayURL = (_url: string) => {
     return Promise.resolve(true);
   };
+
+  isApplePayAvailable = () => {
+    return Promise.resolve(false);
+  };
+
+  getApplePayPrime = () => {
+    return Promise.reject('Not Support on Web');
+  };
 }
