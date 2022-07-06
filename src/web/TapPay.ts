@@ -113,12 +113,10 @@ export class TapPayMethods {
   };
 
   isApplePayAvailable = () => {
-    return Promise.reject(null);
+    return Promise.resolve(false);
   };
 
   getApplePayPrime = () => {
-    console.log('not supported');
-
-    return Promise.reject(null);
+    return Promise.reject('Not Support on Web');
   };
 }
