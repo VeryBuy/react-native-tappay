@@ -16,7 +16,7 @@
     "react-native": "0.67.4",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-simple-radio-button": "^2.7.4",
-    "react-native-tappay": "^1.4.2",
+    "react-native-tappay": "1.6.0",
     "react-native-web": "^0.17.5",
     "react-scripts": "^5.0.1",
     "safe-await": "^2.0.0"

@@ -5,6 +5,7 @@ import { useTapPay } from 'react-native-tappay';
 
 import PayBy from '../../constants/PayBy';
 import TAPPAY_CONFIG from '../../constants/TapPayConfig';
+import ApplePay from '../ApplePay';
 import DirectPay from '../DirectPay';
 import LINEPay from '../LINEPay';
 
@@ -29,6 +30,9 @@ const App = () => {
     const props = { isLoadedSuccess, TapPay };
 
     switch (payBy) {
+      case PayBy.ApplePay: {
+        return <ApplePay {...props} />;
+      }
       case PayBy.LINEPay: {
         return <LINEPay {...props} />;
       }
