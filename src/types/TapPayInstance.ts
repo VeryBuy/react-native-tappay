@@ -1,9 +1,10 @@
+import type { CartData, MerchantData } from './applePay';
 import {
   CardSetupArgs,
   GetCardPrimeResolveValue,
   UpdateCallback,
 } from './card';
-
+export type { MerchantData, CartData } from './applePay';
 export interface SetupArgs {
   appId: number;
   appKey: string;
@@ -11,17 +12,6 @@ export interface SetupArgs {
   rbaId?: string;
   rbaKey?: string;
 }
-export interface MerchantData {
-  merchantName: string;
-  merchantIdentifier: string;
-  countryCode: string;
-  currencyCode: string;
-}
-export interface CartItem {
-  itemName: string;
-  price: number;
-}
-export type CartData = Array<CartItem>;
 
 type IsLoadedSuccess = boolean;
 
