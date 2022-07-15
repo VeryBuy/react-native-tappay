@@ -224,6 +224,14 @@ Returns: `Promise<boolean>`
 Parameters: `url: string`<br>
 Returns: `Promise<boolean>`
 
+### getApplePayPrime(IOS Only)
+Parameters: [MerchantData](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#merchantdata), CartData[[CartItem](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#cartitem)] <br>
+Returns: `Promise<{ prime: string | null }>`
+
+### isApplePayAvailable(IOS Only)
+Parameters: `void`<br>
+Returns: `Promise<boolean>`
+
 #### Types
 
 
@@ -245,6 +253,21 @@ status.number | number | 0 = The field has been filled in and there is no proble
 status.expiry | number | 0 = The field has been filled in and there is no problem<br>1 = The field has not been filled in yet<br>2 = Field error<br> 3 = Typing
 status.ccv | number | 0 = The field has been filled in and there is no problem<br>1 = The field has not been filled in yet<br>2 = Field error<br> 3 = Typing
 
+### MerchantData
+Name | Type | Content
+-----|------|---------
+merchantName |  string  | 
+merchantIdentifier |  string  | your ios certification merchantIdentifier
+countryCode |  string  | 
+currencyCode |  string  | 
+
+### CartItem
+Name | Type | Content
+-----|------|---------
+itemName| string| 
+price| number | 
+
+
 ##### GetCardPrimeResolveValue
 Name                  | Type                          | Content
 ----------------------|-------------------------------|-----------------------------------------------------------------------------------
@@ -260,7 +283,7 @@ merchantReferenceInfo | `{ affiliate_codes: Array }`  |
 # Suppported Payment
  - [x] [Direct Pay](https://www.tappaysdk.com/en/payments/direct-pay)
  - [x] [Line Pay](https://www.tappaysdk.com/en/payments/line-pay)
- - [ ] [Apple Pay](https://www.tappaysdk.com/en/payments/apple-pay) TODO
+ - [x] [Apple Pay](https://www.tappaysdk.com/en/payments/apple-pay)
  - [ ] [Google Pay](https://www.tappaysdk.com/en/payments/google-pay) PR Welcome
  - [ ] [Samsung Pay](https://www.tappaysdk.com/en/payments/samsung-pay) PR Welcome
 
