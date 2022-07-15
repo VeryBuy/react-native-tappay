@@ -114,11 +114,7 @@ export class TapPayMethods {
     return Promise.resolve(true);
   };
 
-  isApplePayAvailable = () => {
-    return Promise.resolve(false);
-  };
-
-  setupApplePay = (merchantData: MerchantData) => {
+  isApplePayAvailable = (merchantData: MerchantData, cartData: CartData) => {
     window.TPDirect.paymentRequestApi.setupApplePay({
       merchantIdentifier: merchantData.merchantIdentifier,
       countryCode: merchantData.countryCode,
@@ -130,7 +126,7 @@ export class TapPayMethods {
         label: merchantData.merchantName,
         amount: {
           currency: merchantData.currencyCode,
-          value: '1.00',
+          value: cartData.reduce((prev, current) => current.price + prev, 0),
         },
       },
     };
@@ -138,21 +134,16 @@ export class TapPayMethods {
     return new Promise((resolve, reject) => {
       window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
         if (!result.browserSupportPaymentRequest) {
-          if (!result.canMakePaymentWithActiveCard) {
-            reject(result);
-          }
-        }
-        // eslint-disable-next-line
-        if (window.ApplePaySession) {
-          resolve(result);
-        } else {
           reject(result);
+
+          return;
         }
+        resolve(true);
       });
     });
   };
 
-  getApplePayPrime = (_merchantData?: MerchantData, _cartData?: CartData) => {
+  getApplePayPrime = () => {
     return new Promise((resolve, reject) => {
       window.TPDirect.paymentRequestApi.getPrime(result => {
         if (result.prime) {

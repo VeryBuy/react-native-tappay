@@ -6,6 +6,7 @@ export interface TapPayDirect {
     setupApplePay: Function;
     setupPaymentRequest: Function;
     getPrime: Function;
+    checkAvailability: Function;
   };
   appID: string;
   setupSDK: Function;
