@@ -114,7 +114,21 @@ export class TapPayMethods {
     return Promise.resolve(true);
   };
 
-  isApplePayAvailable = (merchantData: MerchantData, cartData: CartData) => {
+  isApplePayAvailable = () => {
+    return Promise.resolve(
+      window.TPDirect.paymentRequestApi.checkAvailability(),
+    );
+  };
+
+  getApplePayPrime = () => {
+    console.warn(
+      'You have to call webSetupApplePay and webGetApplePayPrime instead.',
+    );
+
+    return Promise.reject('Not Support on Web');
+  };
+
+  webSetupApplePay = (merchantData: MerchantData, cartData: CartData) => {
     window.TPDirect.paymentRequestApi.setupApplePay({
       merchantIdentifier: merchantData.merchantIdentifier,
       countryCode: merchantData.countryCode,
@@ -131,19 +145,14 @@ export class TapPayMethods {
       },
     };
 
-    return new Promise((resolve, reject) => {
-      window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
-        if (!result.browserSupportPaymentRequest) {
-          reject(result);
-
-          return;
-        }
-        resolve(true);
-      });
+    window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
+      console.log('======setupPaymentRequest START======');
+      console.log(result);
+      console.log('======setupPaymentRequest END======');
     });
   };
 
-  getApplePayPrime = () => {
+  webGetApplePayPrime = () => {
     return new Promise((resolve, reject) => {
       window.TPDirect.paymentRequestApi.getPrime(result => {
         if (result.prime) {

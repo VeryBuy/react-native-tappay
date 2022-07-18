@@ -42,4 +42,9 @@ export default interface TapPayInstance {
     merchantData: MerchantData,
     cartData: CartData,
   ) => Promise<{ prime: string | null }>;
+  webSetupApplePay: (
+    merchantData: MerchantData,
+    cartData: CartData,
+  ) => Promise<boolean>;
+  webGetApplePayPrime: () => Promise<{ prime: string | null }>;
 }
