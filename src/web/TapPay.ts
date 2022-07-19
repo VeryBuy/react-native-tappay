@@ -145,10 +145,14 @@ export class TapPayMethods {
       },
     };
 
-    window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
-      console.log('======setupPaymentRequest START======');
-      console.log(result);
-      console.log('======setupPaymentRequest END======');
+    return new Promise((resolve, reject) => {
+      window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
+        if (result.canMakePaymentError) {
+          reject(result);
+        } else {
+          resolve(result);
+        }
+      });
     });
   };
 
