@@ -1,3 +1,4 @@
+import { CartData, MerchantData } from '../types/applePay';
 import {
   CardSetupArgs,
   GetCardPrimeResolveValue,
@@ -9,6 +10,7 @@ import { TapPayDirect } from '../types/web';
 declare global {
   interface Window {
     TPDirect: TapPayDirect;
+    ApplePaySession: any;
   }
 }
 
@@ -113,10 +115,58 @@ export class TapPayMethods {
   };
 
   isApplePayAvailable = () => {
-    return Promise.resolve(false);
+    return Promise.resolve(
+      window.TPDirect.paymentRequestApi.checkAvailability(),
+    );
   };
 
   getApplePayPrime = () => {
+    console.warn(
+      'You have to call webSetupApplePay and webGetApplePayPrime instead.',
+    );
+
     return Promise.reject('Not Support on Web');
+  };
+
+  webSetupApplePay = (merchantData: MerchantData, cartData: CartData) => {
+    window.TPDirect.paymentRequestApi.setupApplePay({
+      merchantIdentifier: merchantData.merchantIdentifier,
+      countryCode: merchantData.countryCode,
+    });
+    const data = {
+      supportedNetworks: ['MASTERCARD', 'VISA', 'AMEX'],
+      supportedMethods: ['apple_pay'],
+      total: {
+        label: merchantData.merchantName,
+        amount: {
+          currency: merchantData.currencyCode,
+          value: cartData.reduce((prev, current) => current.price + prev, 0),
+        },
+      },
+    };
+
+    return new Promise<any>((resolve, reject) => {
+      window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
+        if (result.canMakePaymentError) {
+          reject(result);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  };
+
+  webGetApplePayPrime = () => {
+    return new Promise<any>((resolve, reject) => {
+      window.TPDirect.paymentRequestApi.getPrime(
+        (result: { prime: string }) => {
+          if (result?.prime) {
+            resolve(result);
+          } else {
+            reject(result);
+          }
+        },
+      );
+    });
   };
 }
