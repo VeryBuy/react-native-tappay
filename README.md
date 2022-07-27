@@ -228,9 +228,18 @@ Returns: `Promise<boolean>`
 Parameters: [MerchantData](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#merchantdata), CartData[[CartItem](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#cartitem)] <br>
 Returns: `Promise<{ prime: string | null }>`
 
-### isApplePayAvailable(IOS Only)
+### isApplePayAvailable(IOS/Web Only)
 Parameters: `void`<br>
 Returns: `Promise<boolean>`
+
+### webSetupApplePay(Web Only)
+Parameters: [MerchantData](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#merchantdata), CartData[[CartItem](https://github.com/VeryBuy/react-native-tappay/edit/master/README.md#cartitem)] <br>
+Returns: `Promise<boolean>`
+
+### webGetApplePayPrime(Web Only)
+Parameters: `void`<br>
+Returns: `Promise<{ prime: string | null }>`
+
 
 #### Types
 
@@ -284,6 +293,7 @@ merchantReferenceInfo | `{ affiliate_codes: Array }`  |
  - [x] [Direct Pay](https://www.tappaysdk.com/en/payments/direct-pay)
  - [x] [Line Pay](https://www.tappaysdk.com/en/payments/line-pay)
  - [x] [Apple Pay](https://www.tappaysdk.com/en/payments/apple-pay)
+ - [x] [Apple Pay for Web](https://www.tappaysdk.com/en/payments/apple-pay)
  - [ ] [Google Pay](https://www.tappaysdk.com/en/payments/google-pay) PR Welcome
  - [ ] [Samsung Pay](https://www.tappaysdk.com/en/payments/samsung-pay) PR Welcome
 
