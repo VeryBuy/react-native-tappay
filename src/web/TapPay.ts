@@ -145,7 +145,7 @@ export class TapPayMethods {
       },
     };
 
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       window.TPDirect.paymentRequestApi.setupPaymentRequest(data, result => {
         if (result.canMakePaymentError) {
           reject(result);
@@ -157,14 +157,16 @@ export class TapPayMethods {
   };
 
   webGetApplePayPrime = () => {
-    return new Promise((resolve, reject) => {
-      window.TPDirect.paymentRequestApi.getPrime(result => {
-        if (result.prime) {
-          resolve(result);
-        } else {
-          reject(result);
-        }
-      });
+    return new Promise<any>((resolve, reject) => {
+      window.TPDirect.paymentRequestApi.getPrime(
+        (result: { prime: string }) => {
+          if (result?.prime) {
+            resolve(result);
+          } else {
+            reject(result);
+          }
+        },
+      );
     });
   };
 }

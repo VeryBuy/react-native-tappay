@@ -38,7 +38,5 @@ export function useTapPay(args: SetupArgs): UseTapPay {
     }
   }, [isLoadedSuccess, appId, rbaId, rbaKey, appKey, env]);
 
-  // eslint-disable-next-line
-  // @ts-ignore
   return [isLoadedSuccess, tapPayInstance];
 }
