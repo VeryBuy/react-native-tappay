@@ -2,6 +2,12 @@ import { CardSetupArgs, GetCardPrime, UpdateCallback } from './card';
 import { GetLinePayPrime } from './linePay';
 
 export interface TapPayDirect {
+  paymentRequestApi: {
+    setupApplePay: Function;
+    setupPaymentRequest: Function;
+    getPrime: Function;
+    checkAvailability: Function;
+  };
   appID: string;
   setupSDK: Function;
   linePay: {
