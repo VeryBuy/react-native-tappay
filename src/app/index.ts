@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 import { SetupArgs, UseTapPay } from '../types/TapPayInstance';
 
@@ -18,7 +18,7 @@ export function useTapPay(args: SetupArgs): UseTapPay {
   };
 
   useEffect(() => {
-    if (rbaId && rbaKey) {
+    if (Platform.OS !== 'ios' && rbaId && rbaKey) {
       setupWithRBA(appId, appKey, rbaId, rbaKey, env);
     } else {
       setup(appId, appKey, env);
