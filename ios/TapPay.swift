@@ -8,6 +8,7 @@
 
 import Foundation
 import AdSupport
+import TPDirect
 
 @objc(TapPay)
 class TapPay: NSObject {
@@ -36,9 +37,8 @@ class TapPay: NSObject {
 
     @objc
     func setupWithRBA(_ appId: NSNumber, appKey: NSString, rbaId: NSString, rbaKey: NSString, serverType: NSString) {
-        let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
-
-        TPDSetup.setWithAppId(appId.int32Value, withAppKey: appKey as String, withRBAAppId: rbaId as String, withRBAAppKey: rbaKey as String, with: serverType)
+        // https://github.com/TapPay/tappay-ios-example/releases/tag/v2.16.5
+        print("setupWithRBA has been removed since v2.16.5");
     }
     
     @objc

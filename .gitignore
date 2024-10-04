@@ -45,3 +45,4 @@ buck-out/
 
 # Use compressed file
 ios/TPDirect.framework
+ios/TPDirect.xcframework
