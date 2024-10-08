@@ -1,7 +1,7 @@
 {
   "name": "react-native-tappay",
   "title": "React Native TapPay",
-  "version": "1.8.0-canary.3",
+  "version": "1.8.0-canary.4",
   "description": "TODO",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
