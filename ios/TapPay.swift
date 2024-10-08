@@ -8,6 +8,7 @@
 
 import Foundation
 import AdSupport
+import TPDirect
 
 @objc(TapPay)
 class TapPay: NSObject {
