@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.public_header_files = "ios/*.h"
   s.requires_arc = true
 
-  s.vendored_frameworks = "ios/TPDirect.framework"
+  s.vendored_frameworks = "ios/TPDirect.xcframework"
   s.resource = "ios/TPDirectResource/Image/*"
   s.dependency "React"
   s.swift_version = "4.0"
